@@ -25,5 +25,9 @@ public class Player : MonoBehaviour
 
     }
 
-
+    public void ReduceHealth(float amount)
+    {
+        health -= amount;
+        if(health <= 0) { health = 0; }     
+    }
 }

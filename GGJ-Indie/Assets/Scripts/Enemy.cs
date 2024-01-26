@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 3.0f;
+    [SerializeField] float damage = 1.0f;
     private GameObject player;
 
     // Start is called before the first frame update
@@ -23,6 +24,13 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        if(player != null) 
+        {
+            player.ReduceHealth(damage);
+        }
+
+        Destroy(gameObject); //Enemigo se destruye
     }
 }
