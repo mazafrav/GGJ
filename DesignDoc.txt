@@ -17,6 +17,9 @@ Vidas -> | 1  | 2  | 3  | 4  | 5  |
 Cara  -> | :C | :( | :| | :) | :D |
 
 - Movimiento -
+Aceleración
+Inercia
+
 
 - Controles -
 WASD: Movimiento personaje
