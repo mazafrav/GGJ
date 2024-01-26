@@ -1,7 +1,6 @@
 
 
 -=- Concepto -=-
-
 Juego en 2D, shooter.
 El juego trata sobre la depresión.
 Transcurre durante la noche en la mente del protagonista.
@@ -10,7 +9,6 @@ A medida que derrota enemigos el fondo pasará de ser gris y sobrio a colorido y
 
 
 -=- Personaje principal -=-
-
 Es una cara que refleja el estado del protagonista.
 A medida que derrota enemigos la cara ira pasando de mostrar una expresión de depresión a una expresión de felicidad.
 Cuando reciba daño la cara pasará a tener una expresión más triste
@@ -18,24 +16,38 @@ Cuando reciba daño la cara pasará a tener una expresión más triste
 Vidas -> | 1  | 2  | 3  | 4  | 5  |
 Cara  -> | :C | :( | :| | :) | :D |
 
+- Movimiento -
+
+- Controles -
+WASD: Movimiento personaje
+Ratón: Apuntado
+M1: Disparo principal
+M2: Disparo meme
+
 
 -=- Disparo -=-
-
 Los disparos serán sprites aleatorios que mostrarán memes, conceptos de amistad, ejercicio físico y cosas que ayudan a superar la depresión.
 Cadencia de dispario media/lenta
 
+- Disparo principal -
+Se dispararán conceptos mostrados en sprites simples como: bicicleta (ejercicio físico), abrazo (cariño), almohada (descanso) ...
+
+- Disparo meme -
+Será el disparo fuerte, con un mayor área y daño.
+Los sprites serán memes (deepfried?)
+Habrá un sistema de recarga (TBD): munición que se recoge del suelo O se recarga munición al recibir daño O tiene cooldown.
+
 
 -=- Fondo / Mapa -=-
-
 Habrá un fondo gris con pocos elementos que irá transformándose en un fondo colorido y psicodélico a medida que se van derrotando enemigos.
 El fondo tendrá referencias a la noche y el sueño ya que el juego transcurre en la mente del protagonista mientras duerme.
+
 
 -=- Enemigos -=-
 
 
 
 -=- Continue game -=-
-
 Algún elmento del partida que se acaba de terminar pasará a la partida siguiente.
 Con esto se va a expresar un mensaje positivo tanto si se ha ganado como perdido.
 De forma que el siguiente jugador parta del punto donde se ha quedado el anterior.
