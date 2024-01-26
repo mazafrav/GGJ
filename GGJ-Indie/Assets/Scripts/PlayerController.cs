@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,6 +9,8 @@ public class PlayerController : MonoBehaviour
   
     [SerializeField]
     float speed;
+
+    Vector3 direction;
 
     private void Awake()
     {
@@ -24,7 +25,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
     }
 
     private void FixedUpdate()
@@ -42,14 +42,10 @@ public class PlayerController : MonoBehaviour
 
     private void Aim()
     {
-        UnityEngine.Vector3 mousePosition = Input.mousePosition;
+        Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        UnityEngine.Vector3 direction = new UnityEngine.Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+        direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         transform.up = direction;
     }
-
-
-
-
 }
