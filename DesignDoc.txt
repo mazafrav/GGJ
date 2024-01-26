@@ -47,8 +47,17 @@ El fondo tendrá referencias a la noche y el sueño ya que el juego transcurre e
 
 
 -=- Enemigos -=-
+-Depresion-
+Tamaño grande, movimiento lento
+-Ansiedad-
+Tamaño pequeño, movimiento errático
+-ElOtro-
+Tamaño normal, movimiento rápido
 
-
+-=- PowerUps -=-
+- Aumento de balas -
+- Disparo piercing -
+- Pet -
 
 -=- Continue game -=-
 Algún elmento del partida que se acaba de terminar pasará a la partida siguiente.
