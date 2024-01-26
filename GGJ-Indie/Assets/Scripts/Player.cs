@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int enemyKills = 0;
 
-    public bool hasTripleShoot = false;
-    public bool hasPiercing = false;
+    public int bulletSpreadCount = 0;
+    public int piercingCount = 0;
 
     public delegate void OnEnemyKillDelegate(Enemy enemy);
     public OnEnemyKillDelegate onEnemyKill; 
