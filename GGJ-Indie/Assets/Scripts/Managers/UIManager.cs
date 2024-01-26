@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
         if(!background) return;
 
         background.color = new Color(background.color.r, background.color.g, background.color.b, progress);
-        Debug.Log(progress * 255);
     }
 
 }
