@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int enemyKills = 0;
 
+    public bool hasTripleShoot = false;
+    public bool hasPiercing = false;
+
     public delegate void OnEnemyKillDelegate(Enemy enemy);
     public OnEnemyKillDelegate onEnemyKill; 
     // Start is called before the first frame update
