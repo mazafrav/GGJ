@@ -1,0 +1,45 @@
+
+
+-=- Concepto -=-
+
+Juego en 2D, shooter.
+El juego trata sobre la depresión.
+Transcurre durante la noche en la mente del protagonista.
+El personaje principal tendrá que derrotar representaciones de distintos problemas de salud mental.
+A medida que derrota enemigos el fondo pasará de ser gris y sobrio a colorido y psicodélico.
+
+
+-=- Personaje principal -=-
+
+Es una cara que refleja el estado del protagonista.
+A medida que derrota enemigos la cara ira pasando de mostrar una expresión de depresión a una expresión de felicidad.
+Cuando reciba daño la cara pasará a tener una expresión más triste
+
+Vidas -> | 1  | 2  | 3  | 4  | 5  |
+Cara  -> | :C | :( | :| | :) | :D |
+
+
+-=- Disparo -=-
+
+Los disparos serán sprites aleatorios que mostrarán memes, conceptos de amistad, ejercicio físico y cosas que ayudan a superar la depresión.
+Cadencia de dispario media/lenta
+
+
+-=- Fondo / Mapa -=-
+
+Habrá un fondo gris con pocos elementos que irá transformándose en un fondo colorido y psicodélico a medida que se van derrotando enemigos.
+El fondo tendrá referencias a la noche y el sueño ya que el juego transcurre en la mente del protagonista mientras duerme.
+
+-=- Enemigos -=-
+
+
+
+-=- Continue game -=-
+
+Algún elmento del partida que se acaba de terminar pasará a la partida siguiente.
+Con esto se va a expresar un mensaje positivo tanto si se ha ganado como perdido.
+De forma que el siguiente jugador parta del punto donde se ha quedado el anterior.
+Se mostrará un texto que exprese motivación para seguir el camino de la lucha contra la depresión y que haga incapié en que uno no está
+solo contra esto, y que cualquier camino recorrido aporta.
+
+-=- Interfaz -=-
