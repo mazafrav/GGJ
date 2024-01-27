@@ -250,6 +250,7 @@ MonoBehaviour:
   speed: 5
   bulletSpeed: 10
   projectile: {fileID: 7327870393572969810, guid: 71cd5adabc2fd4c4f87ef23e138350d0, type: 3}
+  buffPercentage: 0.5
 --- !u!114 &2345648239750370539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,5 +273,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 32aaa0d4d7cf4374a8574a2d1deb670a, type: 3}
   enemyKills: 0
   enemiesToGetLife: 25
-  bulletSpreadCount: 0
+  bulletSpreadCount: 1
   piercingCount: 0
