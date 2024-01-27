@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
         if(player != null) 
         {
             player.ReduceHealth(damage);
+            Destroy(gameObject); //Enemigo se destruye
         }
     }
 
