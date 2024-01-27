@@ -20,6 +20,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] GameObject anxiety;
     [SerializeField] float radius;
     [SerializeField] float spawnRate;
+    [SerializeField] float minSpawnRate;
     Vector3 direction;
 
     // Start is called before the first frame update
@@ -51,8 +52,8 @@ public class Spawner : MonoBehaviour
 
                if (playerProgress != previousProgress)
                {
-                    if(maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - 1) >= 1.0f )
-                        spawnRate = maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - 1);
+                    if(maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - minSpawnRate) >= 1.0f )
+                        spawnRate = maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - minSpawnRate);
 
                     previousProgress = playerProgress;
 

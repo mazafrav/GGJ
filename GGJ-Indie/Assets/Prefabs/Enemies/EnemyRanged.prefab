@@ -74,9 +74,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -925811383
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 52a6de968254c244eb08059d6a495457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de64d18944581d54d8e271ceaf10b259, type: 3}
   m_Color: {r: 0, g: 0.0010291545, b: 0.01132071, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,8 +122,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5.72, y: 5.89}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b4cbb7d6f93654eb55a62c9d7b1e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 2
   movementSpeed: 3
   bulletSpeed: 3
   damage: 1
