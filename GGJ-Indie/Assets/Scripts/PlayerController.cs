@@ -16,9 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject projectile;
 
-    [SerializeField]
-    float buffPercentage = 0.5f;
-
     Player player;
 
     Vector3 direction;
@@ -32,10 +29,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.HasKey("speed") && PlayerPrefs.GetInt("speed") == 1)
-        {
-            speed += (speed * (1 - buffPercentage));
-        }
+        
     }
 
     // Update is called once per frame
