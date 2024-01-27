@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         UiManager.UpdateBackground(progression.Equals(0f) ? 0f : Math.Min(progression / maxProgression, 1));
-        progression += Time.deltaTime * 5;
+        //progression += Time.deltaTime * 5;
         // Debug.Log(progression);
     }
 
@@ -65,6 +65,11 @@ public class GameManager : MonoBehaviour
     public float GetMaxProgression()
     {
         return maxProgression;
+    }
+
+    public void IncreaseProgression()
+    {
+        progression += 1.0f;
     }
 
     public float GetProgression()

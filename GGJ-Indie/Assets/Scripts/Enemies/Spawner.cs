@@ -8,21 +8,30 @@ public class Spawner : MonoBehaviour
 {
     private GameObject player;
     private bool bCanSpawn;
+    private GameObject gameManager;
+    private float maxSpawnRate;
+    private float playerProgress, previousProgress;
+    // private List<int> enemies;
+    [SerializeField] private List<GameObject> enemies;
 
-    [SerializeField] GameObject walker;
+    [SerializeField] GameObject normal;
+    [SerializeField] GameObject depression;
     [SerializeField] GameObject ranged;
     [SerializeField] GameObject anxiety;
     [SerializeField] float radius;
     [SerializeField] float spawnRate;
-    [SerializeField] int killsNeededToIncreaseSpawn;
-    [SerializeField] float spawnTimeReduce;
     Vector3 direction;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        gameManager = GameObject.Find("GameManager");
         direction = player.transform.position.normalized;
+        playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
+        previousProgress = gameManager.GetComponent<GameManager>().GetProgression();
+        maxSpawnRate = spawnRate;
+        enemies.Add(normal);
         bCanSpawn = true;
     }
 
@@ -34,30 +43,43 @@ public class Spawner : MonoBehaviour
             direction = (player.transform.position).normalized * radius;
             Debug.DrawLine(player.transform.position, player.transform.position + direction, Color.green, Time.deltaTime, false);
 
-           
-
             if (bCanSpawn)
             {
-                int kills = player.GetComponent<Player>().GetEnemyKills();
+                GameObject enemy = ChooseEnemy();
+                playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
+                Debug.Log(playerProgress);
 
-                if (kills >= killsNeededToIncreaseSpawn)
-                {
-                    spawnRate -= spawnTimeReduce;
-                }
+               if (playerProgress != previousProgress)
+               {
+                    if(maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - 1) >= 1.0f )
+                        spawnRate = maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - 1);
 
+                    previousProgress = playerProgress;
+
+                    if(playerProgress >= 20.0f && playerProgress <= 20.5f)
+                    {
+                        enemies.Add(depression);
+                        
+                    }else if(playerProgress >= 40.0f && playerProgress <= 40.5f)
+                    {
+                        enemies.Add(anxiety);
+                    }else if (playerProgress >= 60.0f && playerProgress <= 60.5f)
+                    {
+                        enemies.Add(ranged);
+                    }else if(playerProgress >= 80.0f && playerProgress <= 80.5f)
+                    {
+                        enemies.Remove(normal);  
+                    }
+               }
+                
                 float randomX = Random.Range(-7.7f, 7.7f);//- (player.transform.position + direction).x;
                 float randomY = Random.Range(-4.0f, 4.0f); //- (player.transform.position + direction).y;
                 Vector3 posToSpawn = new Vector3(randomX, randomY, 0.0f);
-                Instantiate(ranged, posToSpawn, Quaternion.identity);
+                Instantiate(enemy, posToSpawn, Quaternion.identity);
                 Debug.DrawLine(player.transform.position + direction, posToSpawn, Color.red, Time.deltaTime, false);
 
                 StartCoroutine(ReloadSpawn());
             }
-
-            
-            /*if  (player.transform.position.X > PosX - BRadius && currentTarget.X < PosX + BRadius) &&
-                (currentTarget.Y > PosY - BRadius && currentTarget.Y < PosY + BRadius)*/
-        
         }
     }
 
@@ -66,5 +88,12 @@ public class Spawner : MonoBehaviour
         bCanSpawn = false;
         yield return new WaitForSeconds(spawnRate);
         bCanSpawn = true;
+    }
+
+    private GameObject ChooseEnemy()
+    {
+        int index = Random.Range(0, enemies.Count);
+        GameObject enemyToSpawn = enemies[index];
+        return enemyToSpawn;
     }
 }

@@ -46,7 +46,8 @@ public class Enemy : MonoBehaviour
         health -= amount;     
         if(health <= 0) 
         { 
-            health = 0; 
+            health = 0;
+            player.GetComponent<Player>().EnemyKilled(0);
             Destroy(gameObject); 
         }
     }

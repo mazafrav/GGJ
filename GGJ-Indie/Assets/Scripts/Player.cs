@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private GameObject gameManager;
+
     private int enemy1killed = 0;
     private int enemy2killed = 0;
     private int enemy3killed = 0;
@@ -39,6 +41,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = GameObject.Find("GameManager");
         spriteRenderer.sprite = faces[health-1];
 
         Vector3 v = Vector3.up;
@@ -96,9 +99,12 @@ public class Player : MonoBehaviour
     public void EnemyKilled(int enemyType)
     {
         enemyKills += 1;
+
+        gameManager.GetComponent<GameManager>().IncreaseProgression();
+
         if (enemyKills == enemiesToGetLife)
         {
-            GainHealth();
+            //GainHealth();
             enemyKills = 0;
         }
         if (enemyType == 1) //anxiety
@@ -126,10 +132,5 @@ public class Player : MonoBehaviour
     public int GetEnemyKills()
     {
         return enemyKills;
-    }
-
-    public void IncreaseKills()
-    {
-        enemyKills += 1;
     }
 }

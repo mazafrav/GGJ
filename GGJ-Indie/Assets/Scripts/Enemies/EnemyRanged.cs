@@ -99,7 +99,7 @@ public class EnemyRanged : MonoBehaviour
         { 
             health = 0;
 
-            player.GetComponent<Player>().IncreaseKills();
+            player.GetComponent<Player>().EnemyKilled(3);
             Destroy(gameObject); 
         }
     }
