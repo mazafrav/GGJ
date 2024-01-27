@@ -19,17 +19,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float buffPercentage = 0.5f;
 
+    Player player;
+
     Vector3 direction;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = GetComponent<Player>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerPrefs.HasKey("speed") && PlayerPrefs.GetInt("speed") == 0)
+        if(PlayerPrefs.HasKey("speed") && PlayerPrefs.GetInt("speed") == 1)
         {
             speed += (speed * (1 - buffPercentage));
         }
@@ -67,8 +70,33 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
-            projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+            if(player.bulletSpreadCount > 1) 
+            {
+                Vector3 v = player.transform.up;
+                Debug.Log("up" + v);
+                //angulo
+                const double a = 60f;
+                //num balas
+                int n = player.bulletSpreadCount;
+                Debug.DrawLine(transform.position, v * 100, Color.green, 100);
+                for (int i = 0; i < n; i++)
+                {
+                    Color color = (i == 0 ? Color.blue : i == n - 1 ? Color.magenta : Color.cyan);
+                    //vec es el angulo de los disparos
+                    Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;
+                    Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
+                    Debug.Log(vec);
+                    GameObject projectile_prefab = Instantiate(projectile, vec,new Quaternion(vec.x,vec.y,0,0));
+
+                    projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;
+                }
+
+            }
+            else //only shoots one projectile
+            {
+                GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
+                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+            }
         }
     }
 }

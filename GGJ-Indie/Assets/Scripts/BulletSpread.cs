@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletSpread : MonoBehaviour
 {
+    [SerializeField] int maxBulletSpread = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +24,9 @@ public class BulletSpread : MonoBehaviour
         {
             Debug.Log("APLICANDO TRIPLE DISPARO");
             Player player = other.GetComponent<Player>();
-            if (player != null)
+            if (player != null && player.bulletSpreadCount < maxBulletSpread)
             {
+                
                 player.bulletSpreadCount++;
                 Destroy(gameObject);
             }
