@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
                     enemyRanged.ReduceHhealth(damage);
                 }
 
-                Destroy(gameObject); //Se destruye el projectil
+                if(collision.tag != "Pet")Destroy(gameObject); //Se destruye el projectil
             }
             else if (player != null && piercingCount > 0)
             {

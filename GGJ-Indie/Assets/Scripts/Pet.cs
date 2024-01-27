@@ -25,8 +25,13 @@ public class Pet : MonoBehaviour
 
         if(player != null)
         {
-            Instantiate(pet, collision.transform);
-            Destroy(gameObject);
+           RotateAround newPet = Instantiate(pet, collision.transform).GetComponent<RotateAround>();
+           if(newPet != null) 
+           {
+              newPet.SetRotateSpeed();
+              newPet.SetClockwiseRotation();
+           }
+           Destroy(gameObject); //se destruye el power up
         }       
     }
 }
