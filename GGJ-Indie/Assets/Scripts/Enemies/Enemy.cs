@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ReduceHhealth(int amount)
+    public void ReduceHealth(int amount)
     {
         health -= amount;     
         if(health <= 0) 

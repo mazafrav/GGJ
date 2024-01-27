@@ -39,12 +39,12 @@ public class Projectile : MonoBehaviour
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.ReduceHhealth(damage);
+                    enemy.ReduceHealth(damage);
                 }
                 EnemyRanged enemyRanged = collision.GetComponent<EnemyRanged>();
                 if(enemyRanged != null)
                 {
-                    enemyRanged.ReduceHhealth(damage);
+                    enemyRanged.ReduceHealth(damage);
                 }
 
                 if(collision.tag != "Pet")Destroy(gameObject); //Se destruye el projectil
