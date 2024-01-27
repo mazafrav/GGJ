@@ -9,7 +9,7 @@ public class EnemyRanged : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 3.0f;
     [SerializeField] float bulletSpeed = 3.0f;
-    [SerializeField] float damage = 1.0f;
+    [SerializeField] int damage = 1;
     [SerializeField] float bulletDamage = 1.0f;
     [SerializeField] float rangeToShoot = 6.0f;
     [SerializeField] float shootCooldown = 1.0f;

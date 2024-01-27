@@ -177,7 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 386055325aa102740a197cda01a92d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 5
+  faces:
+  - {fileID: -2413806693520163455, guid: 26330d0c27935c741a4b67e1b30bd0d7, type: 3}
+  - {fileID: 7482667652216324306, guid: 52a6de968254c244eb08059d6a495457, type: 3}
+  - {fileID: 7482667652216324306, guid: c61d3817c8cc76541ab2931e44ea928e, type: 3}
+  - {fileID: 3625043607559282579, guid: ed24636b85bf8304c86944bac05df91a, type: 3}
+  - {fileID: 2747690628134850419, guid: 0eebe93e6205de0449396d1f9ef9c2c0, type: 3}
   enemyKills: 0
   bulletSpreadCount: 0
   piercingCount: 0

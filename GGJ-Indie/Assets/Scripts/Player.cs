@@ -7,7 +7,10 @@ using Unity.VisualScripting;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float health = 100;
+    private int health = 100;
+
+    [SerializeField]
+    private Sprite[] faces;
 
     [SerializeField]
     private int enemyKills = 0;
@@ -18,9 +21,14 @@ public class Player : MonoBehaviour
     public delegate void OnEnemyKillDelegate(Enemy enemy);
     public OnEnemyKillDelegate onEnemyKill;
 
+    private SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = faces[0];
+
         Vector3 v = Vector3.up;
         Debug.Log("up" + v);
         //angulo
@@ -44,10 +52,16 @@ public class Player : MonoBehaviour
 
     }
 
-    public void ReduceHealth(float amount)
-    {
-        health -= amount;
+    public void ReduceHealth(int amount)
+    {       
+        health -= amount;       
         if (health <= 0) { health = 0; }
+        //else
+        //{
+        //    int index = faces.Length - health <=0 ? 0: faces.Length - health;      
+        //    spriteRenderer.sprite = faces[index];       
+        //}
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,7 +70,7 @@ public class Player : MonoBehaviour
         {
             //collision.gameObject.damage     // Daño del proyectil??
             Destroy(collision.gameObject);
-            this.ReduceHealth(1f);            // Daño del proyectil??
+            this.ReduceHealth(1);            // Daño del proyectil??
         }
     }
 }
