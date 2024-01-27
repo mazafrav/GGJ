@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = faces[health];
+        spriteRenderer.sprite = faces[health-1];
 
         Vector3 v = Vector3.up;
         Debug.Log("up" + v);
@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
         health -= amount;
         if (health <= 0) 
         {
+            health = 0;
             SceneManager.LoadScene(3);
         }
         UpdateSprite();
@@ -85,7 +86,11 @@ public class Player : MonoBehaviour
 
     private void UpdateSprite()
     {
-        spriteRenderer.sprite = faces[health - 1];
+        if (health > 0)
+        {
+            spriteRenderer.sprite = faces[health - 1];
+        }
+        
     }
 
     public void EnemyKilled(int enemyType)
