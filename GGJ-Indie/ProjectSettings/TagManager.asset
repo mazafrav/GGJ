@@ -7,9 +7,10 @@ TagManager:
   - EnemyProjectile
   - PlayerProjectile
   - Pet
-  - Wall
   - DVD
   - Enemy
+  - Vertical_Wall
+  - Horizontal_Wall
   layers:
   - Default
   - TransparentFX
