@@ -450,7 +450,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.5294118, g: 0.54509807, b: 0.54901963, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4853,6 +4853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0889eea0e91fe4bbc11ed2602a2e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blurMaterial: {fileID: 0}
   background: {fileID: 1343956471}
 --- !u!1001 &1985251670
 PrefabInstance:
