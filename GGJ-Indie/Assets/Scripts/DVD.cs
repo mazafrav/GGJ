@@ -27,38 +27,43 @@ public class DVD : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("entro en collision general");
-        if (other.CompareTag("Vertical_Wall"))
+        if(other.gameObject.tag != "Player")
         {
-            //float randomX = Random.Range(0f, 5f);
-            Vector3 randomDir = new Vector3(rb.velocity.x, rb.velocity.y * -1, 0);
-            rb.velocity = randomDir;
-            Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-            Debug.Log(randomColor.ToString());
-            spriteRenderer.color = randomColor;
-        }
-        else if (other.CompareTag("Horizontal_Wall"))
-        {
-            //float randomY = Random.Range(0f, 5f);
-            Vector3 randomDir = new Vector3(rb.velocity.x * -1, rb.velocity.y, 0);
-            rb.velocity = randomDir;
-            Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-            Debug.Log(randomColor.ToString());
-            spriteRenderer.color = randomColor;
+            Debug.Log("entro en collision general");
+            if (other.CompareTag("Vertical_Wall"))
+            {
+                //float randomX = Random.Range(0f, 5f);
+                Vector3 randomDir = new Vector3(rb.velocity.x, rb.velocity.y * -1, 0);
+                rb.velocity = randomDir;
+                Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                Debug.Log(randomColor.ToString());
+                spriteRenderer.color = randomColor;
+            }
+            else if (other.CompareTag("Horizontal_Wall"))
+            {
+                //float randomY = Random.Range(0f, 5f);
+                Vector3 randomDir = new Vector3(rb.velocity.x * -1, rb.velocity.y, 0);
+                rb.velocity = randomDir;
+                Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+                Debug.Log(randomColor.ToString());
+                spriteRenderer.color = randomColor;
+            }
+
+            if (other.CompareTag("Enemy"))
+            {
+                Enemy enemy = other.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.ReduceHhealth(damage);
+                }
+                EnemyRanged enemyRanged = other.GetComponent<EnemyRanged>();
+                if (enemyRanged != null)
+                {
+                    enemyRanged.ReduceHhealth(damage);
+                }
+            }
         }
 
-        if (other.CompareTag("Enemy"))
-        {
-            Enemy enemy = other.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.ReduceHhealth(damage);
-            }
-            EnemyRanged enemyRanged = other.GetComponent<EnemyRanged>();
-            if (enemyRanged != null)
-            {
-                enemyRanged.ReduceHhealth(damage);
-            }
-        }
+        
     }
 }
