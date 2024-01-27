@@ -6,9 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     float velX, velY;
     Rigidbody2D rb;
-  
+
     [SerializeField]
     float speed;
+
+    [SerializeField]
+    float bulletSpeed;
+
+    [SerializeField]
+    GameObject projectile;
 
     Vector3 direction;
 
@@ -25,6 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Shoot();
     }
 
     private void FixedUpdate()
@@ -37,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         velX = Input.GetAxisRaw("Horizontal");
         velY = Input.GetAxisRaw("Vertical");
-        rb.velocity = new UnityEngine.Vector2(velX * speed, velY * speed);
+        rb.velocity = new Vector2(velX * speed, velY * speed);
     }
 
     private void Aim()
@@ -47,5 +54,14 @@ public class PlayerController : MonoBehaviour
 
         direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
         transform.up = direction;
+    }
+
+    private void Shoot()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
+            projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+        }
     }
 }

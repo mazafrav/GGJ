@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -44,5 +45,15 @@ public class Player : MonoBehaviour
     {
         health -= amount;
         if(health <= 0) { health = 0; }     
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "EnemyProjectile")
+        {
+            //collision.gameObject.damage     // Daño del proyectil??
+            Destroy(collision.gameObject);
+            this.ReduceHealth(1f);            // Daño del proyectil??
+        }
     }
 }

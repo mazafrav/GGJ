@@ -34,6 +34,5 @@ public class Projectile : MonoBehaviour
                 hasHit = true;
             }
         }
-        
     }
 }
