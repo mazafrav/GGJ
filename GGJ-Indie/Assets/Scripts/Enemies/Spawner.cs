@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
 
                 if (kills >= killsNeededToIncreaseSpawn)
                 {
-                    timeBetweenSpawn -= spawnTimeReduce;
+                    spawnRate -= spawnTimeReduce;
                 }
 
                 float randomX = Random.Range(-7.7f, 7.7f);//- (player.transform.position + direction).x;
@@ -64,7 +64,7 @@ public class Spawner : MonoBehaviour
     IEnumerator ReloadSpawn()
     {
         bCanSpawn = false;
-        yield return new WaitForSeconds(timeBetweenSpawn);
+        yield return new WaitForSeconds(spawnRate);
         bCanSpawn = true;
     }
 }
