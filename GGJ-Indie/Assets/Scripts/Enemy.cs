@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 3.0f;
     [SerializeField] float damage = 1.0f;
+    [SerializeField] bool hasErraticMovement = false;
+    [SerializeField] float erraticDistance = 7.0f;
     private GameObject player;
 
     // Start is called before the first frame update
@@ -18,6 +20,10 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Vector3 direction = (player.transform.position - transform.position).normalized;
+        if (hasErraticMovement) 
+        {
+            direction += new Vector3(Random.Range(-erraticDistance, erraticDistance), Random.Range(-erraticDistance, erraticDistance), 0.0f);
+        }
 
         transform.position += speed * Time.deltaTime * direction;
     }
