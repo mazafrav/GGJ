@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    float velX, velY;
-    Rigidbody2D rb;
+    private float velX, velY;
+    private Rigidbody2D rb;
+    private bool bCanShoot;
+
+    [SerializeField]
+    float fireRate;
 
     [SerializeField]
     float speed;
@@ -24,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        bCanShoot = true;
     }
 
     // Start is called before the first frame update
@@ -62,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             if(player.bulletSpreadCount > 1) 
             {
@@ -86,11 +91,21 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            else //only shoots one projectile
+            else if(bCanShoot) //only shoots one projectile
             {
+
+                
                 GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
-                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;                
+                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+                StartCoroutine(Reload());
             }
         }
+    }
+
+    IEnumerator Reload()
+    {
+        bCanShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        bCanShoot = true;
     }
 }

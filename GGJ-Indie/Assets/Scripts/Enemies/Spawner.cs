@@ -75,7 +75,7 @@ public class Spawner : MonoBehaviour
                 
                 float randomX = Random.Range(-7.7f, 7.7f);//- (player.transform.position + direction).x;
                 float randomY = Random.Range(-4.0f, 4.0f); //- (player.transform.position + direction).y;
-                Vector3 posToSpawn = new Vector3(randomX, randomY, 0.0f);
+                Vector3 posToSpawn = new Vector3(randomX*radius, randomY+radius, 0.0f);
                 Instantiate(enemy, posToSpawn, Quaternion.identity);
                 Debug.DrawLine(player.transform.position + direction, posToSpawn, Color.red, Time.deltaTime, false);
 
