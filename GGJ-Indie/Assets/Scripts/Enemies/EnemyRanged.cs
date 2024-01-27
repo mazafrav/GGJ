@@ -7,6 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyRanged : MonoBehaviour
 {
+    [SerializeField] int health = 2;
     [SerializeField] float movementSpeed = 3.0f;
     [SerializeField] float bulletSpeed = 3.0f;
     [SerializeField] int damage = 1;
@@ -47,11 +48,11 @@ public class EnemyRanged : MonoBehaviour
             Destroy(gameObject); //Enemigo se destruye
         }
 
-        if(collision.CompareTag("PlayerProjectile"))
-        {
-            Destroy(collision.gameObject);      // Destruye proyectil
-            Destroy(gameObject);                // Destruye enemigo
-        }
+        //if(collision.CompareTag("PlayerProjectile"))
+        //{
+        //    Destroy(collision.gameObject);              // Destruye proyectil
+        //    if (health <= 0) { Destroy(gameObject); }   // Destruye enemigo
+        //}
     }
 
     private void RotateToPlayer()
@@ -89,5 +90,15 @@ public class EnemyRanged : MonoBehaviour
         bCanShoot = false;
         yield return new WaitForSeconds(shootCooldown);
         bCanShoot = true;
+    }
+
+    public void ReduceHhealth(int amount)
+    {
+        health -= amount;
+        if (health <= 0) 
+        { 
+            health = 0; 
+            Destroy(gameObject); 
+        }
     }
 }

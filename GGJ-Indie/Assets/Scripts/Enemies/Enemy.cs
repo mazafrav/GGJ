@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] int health = 2;
     [SerializeField] float speed = 3.0f;
     [SerializeField] int damage = 1;
     [SerializeField] bool hasErraticMovement = false;
@@ -30,13 +31,22 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Quitamos vida al jugador
         Player player = collision.gameObject.GetComponent<Player>();
 
         if(player != null) 
         {
             player.ReduceHealth(damage);
         }
+    }
 
-        Destroy(gameObject); //Enemigo se destruye
+    public void ReduceHhealth(int amount)
+    {
+        health -= amount;     
+        if(health <= 0) 
+        { 
+            health = 0; 
+            Destroy(gameObject); 
+        }
     }
 }
