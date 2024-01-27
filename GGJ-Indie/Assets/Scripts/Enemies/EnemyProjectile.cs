@@ -16,15 +16,4 @@ public class EnemyProjectile : MonoBehaviour
     {
         
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //Quitamos vida al jugador
-        Player player = collision.gameObject.GetComponent<Player>();
-
-        if (player != null)
-        {
-            player.ReduceHealth(damage);
-        }
-    }
 }
