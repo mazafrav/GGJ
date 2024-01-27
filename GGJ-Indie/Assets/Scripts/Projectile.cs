@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     int piercingCount = 0;
     Player player;
 
-    [SerializeField] private float buffPercentage = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +17,7 @@ public class Projectile : MonoBehaviour
 
         if (PlayerPrefs.HasKey("buff") && PlayerPrefs.GetInt("buff") == 2)
         {
-            transform.localScale = new Vector3(transform.localScale.x * (1 + buffPercentage),
-                transform.localScale.y * (1 + buffPercentage), 0);
+            damage = 2;
         }
     }
 

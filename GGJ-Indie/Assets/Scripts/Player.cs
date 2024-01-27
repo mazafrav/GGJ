@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private GameObject gameManager;
+    private PowerUpManager pwMng;
 
     private int enemy1killed = 0;
     private int enemy2killed = 0;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         gameManager = GameObject.Find("GameManager");
+        pwMng = GameObject.Find("PowerUpManager").GetComponent<PowerUpManager>();
         spriteRenderer.sprite = faces[health-1];
 
         Vector3 v = Vector3.up;
@@ -50,14 +52,11 @@ public class Player : MonoBehaviour
         const double a = 45f;
         //num balas
         const int n = 8;
-        Debug.DrawLine(transform.position, v * 100, Color.green, 100);
         for (int i = 0; i < n; i++)
         {
             Color color = (i == 0 ? Color.blue : i == n - 1 ? Color.magenta : Color.cyan);
             //vec es el angulo de los disparos
             Vector3 vec = Quaternion.Euler(0, 0, (float) (-a / 2 + (a / (n - 1))  * i)) * v;
-            Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
-            Debug.Log(v);
         }
     }
 
@@ -101,6 +100,7 @@ public class Player : MonoBehaviour
         enemyKills += 1;
 
         gameManager.GetComponent<GameManager>().IncreaseProgression();
+        pwMng.hasKilled= true;
 
         if (enemyKills == enemiesToGetLife)
         {
