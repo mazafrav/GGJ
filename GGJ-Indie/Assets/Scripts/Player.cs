@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class Player : MonoBehaviour
     public OnEnemyKillDelegate onEnemyKill;
 
     private SpriteRenderer spriteRenderer;
+
+    private int enemy1killed = 0;
+    private int enemy2killed = 0;
+    private int enemy3killed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -83,13 +88,23 @@ public class Player : MonoBehaviour
         spriteRenderer.sprite = faces[health - 1];
     }
 
-    public void EnemyKilled()
+    public void EnemyKilled(int enemyType)
     {
         enemyKills += 1;
         if (enemyKills == enemiesToGetLife)
         {
             GainHealth();
             enemyKills = 0;
+        }
+        if (enemyType == 1) //anxiety
+        {
+            enemy1killed++;
+        } else if (enemyType == 2) //depression
+        {
+            enemy2killed++;
+        } else if (enemyType == 3) //elotro
+        {
+            enemy3killed++;
         }
 
     }

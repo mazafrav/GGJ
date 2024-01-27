@@ -39,8 +39,6 @@ public class Enemy : MonoBehaviour
             player.ReduceHealth(damage);
             Destroy(gameObject); //Enemigo se destruye
         }
-
-        Destroy(gameObject);
     }
 
     public void ReduceHhealth(int amount)
