@@ -179,11 +179,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   faces:
-  - {fileID: -2413806693520163455, guid: 26330d0c27935c741a4b67e1b30bd0d7, type: 3}
-  - {fileID: 7482667652216324306, guid: 52a6de968254c244eb08059d6a495457, type: 3}
-  - {fileID: 7482667652216324306, guid: c61d3817c8cc76541ab2931e44ea928e, type: 3}
-  - {fileID: 3625043607559282579, guid: ed24636b85bf8304c86944bac05df91a, type: 3}
-  - {fileID: 2747690628134850419, guid: 0eebe93e6205de0449396d1f9ef9c2c0, type: 3}
+  - {fileID: 21300000, guid: 18a545102a65b254b9a5a29c5245c73b, type: 3}
+  - {fileID: 21300000, guid: 2e1cb1937df994347a60ebaac484ab42, type: 3}
+  - {fileID: 21300000, guid: 0bd3ab7629dbed54dabcc6e9a2b43516, type: 3}
+  - {fileID: 21300000, guid: d88fd69de01831e46b44c4d8b894519d, type: 3}
+  - {fileID: 21300000, guid: 32aaa0d4d7cf4374a8574a2d1deb670a, type: 3}
   enemyKills: 0
   bulletSpreadCount: 0
   piercingCount: 0
