@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed = 3.0f;
-    [SerializeField] float damage = 1.0f;
+    [SerializeField] int damage = 1;
     [SerializeField] bool hasErraticMovement = false;
     [SerializeField] float erraticDistance = 7.0f;
     private GameObject player;
