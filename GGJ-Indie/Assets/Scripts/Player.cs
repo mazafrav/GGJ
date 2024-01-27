@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -29,11 +31,15 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private int enemy1killed = 0;
+    private int enemy2killed = 0;
+    private int enemy3killed = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = faces[2];
+        spriteRenderer.sprite = faces[health-1];
 
         Vector3 v = Vector3.up;
         Debug.Log("up" + v);
@@ -59,16 +65,14 @@ public class Player : MonoBehaviour
     }
 
     public void ReduceHealth(int amount)
-    {       
-        health -= amount;       
+    {
+        health -= amount;
         if (health <= 0) 
-        { 
-            health = 0; 
-        }
-        else if (health > 0)
         {
-            spriteRenderer.sprite = faces[health];
+            health = 0;
+            SceneManager.LoadScene(3);
         }
+        UpdateSprite();
     }
 
     private void GainHealth()
@@ -76,17 +80,36 @@ public class Player : MonoBehaviour
         if (health < maxHealth)
         {
             health += 1;
-            spriteRenderer.sprite = faces[health];
         }
+        UpdateSprite();
     }
 
-    public void EnemyKilled()
+    private void UpdateSprite()
+    {
+        if (health > 0)
+        {
+            spriteRenderer.sprite = faces[health - 1];
+        }
+        
+    }
+
+    public void EnemyKilled(int enemyType)
     {
         enemyKills += 1;
         if (enemyKills == enemiesToGetLife)
         {
             GainHealth();
             enemyKills = 0;
+        }
+        if (enemyType == 1) //anxiety
+        {
+            enemy1killed++;
+        } else if (enemyType == 2) //depression
+        {
+            enemy2killed++;
+        } else if (enemyType == 3) //elotro
+        {
+            enemy3killed++;
         }
 
     }
@@ -99,5 +122,14 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
             this.ReduceHealth(1);            // Daño del proyectil??
         }
+    }
+    public int GetEnemyKills()
+    {
+        return enemyKills;
+    }
+
+    public void IncreaseKills()
+    {
+        enemyKills += 1;
     }
 }

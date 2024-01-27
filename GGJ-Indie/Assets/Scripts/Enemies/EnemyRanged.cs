@@ -97,7 +97,9 @@ public class EnemyRanged : MonoBehaviour
         health -= amount;
         if (health <= 0) 
         { 
-            health = 0; 
+            health = 0;
+
+            player.GetComponent<Player>().IncreaseKills();
             Destroy(gameObject); 
         }
     }
