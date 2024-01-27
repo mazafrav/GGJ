@@ -6,6 +6,10 @@ TagManager:
   tags:
   - EnemyProjectile
   - PlayerProjectile
+  - Pet
+  - Wall
+  - DVD
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -13,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Wall
+  - DVD
   - 
   - 
   - 
