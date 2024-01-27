@@ -10,8 +10,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateBackground(float progress) {
         if(!background) return;
-
-        background.color = new Color(background.color.r, background.color.g, background.color.b, progress);
+        background.material.SetFloat("_Progress", progress);
     }
 
 }
