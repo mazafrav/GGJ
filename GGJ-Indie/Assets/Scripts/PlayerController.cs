@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
                     Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;
                     Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
                     Debug.Log(vec);
-                    GameObject projectile_prefab = Instantiate(projectile, vec,new Quaternion(vec.x,vec.y,0,0));
+                    GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
 
                     projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;
                 }
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
             else //only shoots one projectile
             {
                 GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
-                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;                
             }
         }
     }
