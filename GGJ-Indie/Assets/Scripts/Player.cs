@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
             Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
             Debug.Log(v);
         }
-        Debug.Log("aa" + v);
     }
 
     // Update is called once per frame
