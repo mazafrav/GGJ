@@ -6,7 +6,6 @@ public class Projectile : MonoBehaviour
 {
     int piercingCount = 0;
     Player player;
-    bool hasHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,10 +27,9 @@ public class Projectile : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            else if (player != null && piercingCount > 0 && !hasHit)
+            else if (player != null && piercingCount > 0)
             {
-                player.piercingCount--;
-                hasHit = true;
+                piercingCount--;
             }
         }
     }

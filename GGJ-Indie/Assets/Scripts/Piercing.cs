@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Piercing : MonoBehaviour
 {
+    [SerializeField]
+    private int max_piercing_hits = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,10 @@ public class Piercing : MonoBehaviour
             Player player = other.GetComponent<Player>();
             if (player != null)
             {
-                player.piercingCount++;
+                if (player.piercingCount < max_piercing_hits)
+                {
+                    player.piercingCount++;
+                }
                 Destroy(gameObject);
             }
         }
