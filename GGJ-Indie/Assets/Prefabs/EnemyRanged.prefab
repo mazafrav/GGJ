@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 52a6de968254c244eb08059d6a495457, type: 3}
-  m_Color: {r: 0.0353078, g: 0.12110524, b: 0.98490566, a: 1}
+  m_Color: {r: 0, g: 0.0010291545, b: 0.01132071, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,6 +147,7 @@ MonoBehaviour:
   movementSpeed: 3
   bulletSpeed: 3
   damage: 1
+  bulletDamage: 1
   rangeToShoot: 7
   shootCooldown: 2
   projectile: {fileID: 7327870393572969810, guid: f01c3c5c0860f1942bbf3a2dd1f58045, type: 3}
