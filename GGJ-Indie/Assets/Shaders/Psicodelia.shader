@@ -74,11 +74,15 @@ Shader "Unlit/Psicodelia"
                 // fixed4 col = tex2D(_MainTex, i.uv);
                 // fixed4 col = tex2D(_MainTex, uv);
 
-                float noise = tex2D(_PerlinTex, uv) + _GradientTex_TexelSize.x * 0.5;
-                // noise = lerp(0, 1, noise);
-
+                float noise = tex2D(_PerlinTex, uv) + _GradientTex_TexelSize.x;
+                noise = noise + step(0.5, noise) * 0.1 - step(0.5, 1 - noise) * 0.1;
+                // noise = clamp(noise, 0.15)
+                noise = lerp(0, 1, noise);
                 
-                float4 col = tex2D(_GradientTex, float2(noise , 0.));
+                
+                float4 col = tex2D(_GradientTex, float2(noise , 0.0));
+                float grayscale = col.r * 0.2126 + col.g * 0.7152 + col.b * 0.0722;
+                col = col * _Progress + float4(grayscale, grayscale, grayscale, 0) * (1 - _Progress);
                 col.a = _Progress;
                 // apply fog
                 // UNITY_APPLY_FOG(i.fogCoord, col);
