@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = faces[2];
+        spriteRenderer.sprite = faces[health];
 
         Vector3 v = Vector3.up;
         Debug.Log("up" + v);
@@ -59,16 +60,13 @@ public class Player : MonoBehaviour
     }
 
     public void ReduceHealth(int amount)
-    {       
-        health -= amount;       
+    {
+        health -= amount;
         if (health <= 0) 
-        { 
-            health = 0; 
-        }
-        else if (health > 0)
         {
-            spriteRenderer.sprite = faces[health];
+            SceneManager.LoadScene(3);
         }
+        UpdateSprite();
     }
 
     private void GainHealth()
@@ -76,8 +74,13 @@ public class Player : MonoBehaviour
         if (health < maxHealth)
         {
             health += 1;
-            spriteRenderer.sprite = faces[health];
         }
+        UpdateSprite();
+    }
+
+    private void UpdateSprite()
+    {
+        spriteRenderer.sprite = faces[health - 1];
     }
 
     public void EnemyKilled()

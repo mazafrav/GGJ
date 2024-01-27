@@ -38,6 +38,8 @@ public class Enemy : MonoBehaviour
         {
             player.ReduceHealth(damage);
         }
+
+        Destroy(gameObject);
     }
 
     public void ReduceHhealth(int amount)
