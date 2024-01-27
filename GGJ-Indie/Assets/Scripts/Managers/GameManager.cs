@@ -62,6 +62,16 @@ public class GameManager : MonoBehaviour
         Debug.Log("Progression: " + progression);
     }
 
+    public float GetMaxProgression()
+    {
+        return maxProgression;
+    }
+
+    public float GetProgression()
+    {
+        return progression;
+    }
+
     public Player GetPlayer()
     {
         return player;

@@ -100,4 +100,13 @@ public class Player : MonoBehaviour
             this.ReduceHealth(1);            // Daño del proyectil??
         }
     }
+    public int GetEnemyKills()
+    {
+        return enemyKills;
+    }
+
+    public void IncreaseKills()
+    {
+        enemyKills += 1;
+    }
 }
