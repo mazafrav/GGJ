@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] int damage = 1;
     int piercingCount = 0;
     Player player;
     // Start is called before the first frame update
@@ -25,7 +26,19 @@ public class Projectile : MonoBehaviour
         {
             if(player != null && piercingCount==0)
             {
-                Destroy(gameObject);
+                //Quitamos vida a los enemigos
+                Enemy enemy = collision.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.ReduceHhealth(damage);
+                }
+                EnemyRanged enemyRanged = collision.GetComponent<EnemyRanged>();
+                if(enemyRanged != null)
+                {
+                    enemyRanged.ReduceHhealth(damage);
+                }
+
+                if(collision.tag != "Pet")Destroy(gameObject); //Se destruye el projectil
             }
             else if (player != null && piercingCount > 0)
             {

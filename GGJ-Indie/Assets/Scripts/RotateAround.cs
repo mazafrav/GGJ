@@ -42,4 +42,14 @@ public class RotateAround : MonoBehaviour
             transform.position = pos + centerPoint.transform.position;
         }
     }
+
+    public void SetRotateSpeed()
+    {
+        rotSpeed = Random.Range(1.0f, 2.0f);
+    }
+
+    public void SetClockwiseRotation()
+    {
+        rotateClockWise = Random.Range(0, 2) == 0 ? true : false;
+    }
 }
