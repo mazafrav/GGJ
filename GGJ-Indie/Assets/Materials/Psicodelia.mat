@@ -23,8 +23,20 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _GradientTex:
+        m_Texture: {fileID: 2800000, guid: 659fd2e7e80e6d041aed4c51434db16e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 93e1639ffb8659c49abe75f6b6c96c40, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PerlinTex:
+        m_Texture: {fileID: 2800000, guid: bb493b8e147e2074aa4a7fcf5daab11c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _VoronoiTex:
+        m_Texture: {fileID: 2800000, guid: b478731b86e1cf24e8c18e1ab0b18ced, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
