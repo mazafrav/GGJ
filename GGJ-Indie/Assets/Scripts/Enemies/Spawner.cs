@@ -60,9 +60,9 @@ public class Spawner : MonoBehaviour
                 float angle = Random.Range(0, 360.0f);//- (player.transform.position + direction).x;
 
                 v = Quaternion.Euler(0, 0, angle) * v;
-                Vector3 spawnPos = (player.transform.position + v) * Random.Range(radius, 2*radius);
+                Vector3 spawnPos = player.transform.position + v * Random.Range(radius, 2 * radius);
 
-                Debug.DrawLine(player.transform.position, spawnPos, Color.red, 10, false);
+                //Debug.DrawLine(player.transform.position, spawnPos, Color.red, 100, false);
                 Instantiate(enemy, spawnPos, Quaternion.identity);
                 StartCoroutine(ReloadSpawn());
             }
