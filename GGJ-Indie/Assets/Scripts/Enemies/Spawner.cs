@@ -32,9 +32,6 @@ public class Spawner : MonoBehaviour
         previousProgress = gameManager.GetComponent<GameManager>().GetProgression();
         maxSpawnRate = spawnRate;
         enemies.Add(normal);
-        enemies.Add(depression);
-        enemies.Add(ranged);
-        enemies.Add(anxiety);
         bCanSpawn = true;
     }
 
@@ -48,6 +45,19 @@ public class Spawner : MonoBehaviour
 
             if (bCanSpawn)
             {
+                if (playerProgress > 20.0f && enemies.Count < 1)
+                {
+                    enemies.Add(depression);
+                }
+                if (playerProgress > 40.0f && enemies.Count < 2)
+                {
+                    enemies.Add(anxiety);
+                }
+                if (playerProgress > 60.0f && enemies.Count < 3)
+                {
+                    enemies.Add(ranged);
+                }
+
                 GameObject enemy = ChooseEnemy();
                 playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
 
@@ -80,31 +90,7 @@ public class Spawner : MonoBehaviour
 
     private GameObject ChooseEnemy()
     {
-        int index = 0;
-        int rndMax = 0;
-        int rndMin = 0;
-        float playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
-        if (playerProgress > 20.0f)
-        {
-            rndMax = 1;
-        }
-        if (playerProgress > 40.0f)
-        {
-            rndMax = 2;
-        }
-        if (playerProgress > 60.0f)
-        {
-            rndMax = 3;
-        }
-        if (playerProgress > 80.0f)
-        {
-            rndMin = 1;
-            rndMax = 3;
-        }
-        if (rndMax != 0)
-        {
-            index = Random.Range(rndMin, rndMax);
-        }
+        int index = Random.Range(0, enemies.Count);
         GameObject enemyToSpawn = enemies[index];
         return enemyToSpawn;
     }

@@ -39,6 +39,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void ResumeGame()
     {
+        Cursor.visible=false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;  
