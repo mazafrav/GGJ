@@ -76,22 +76,21 @@ public class PlayerController : MonoBehaviour
                 const double a = 60f;
                 //num balas
                 int n = player.bulletSpreadCount;
-                Debug.DrawLine(transform.position, v * 100, Color.green, 100);
-                for (int i = 0; i < n; i++)
+              
+                if (bCanShoot)
                 {
-                    Color color = (i == 0 ? Color.blue : i == n - 1 ? Color.magenta : Color.cyan);
-                    //vec es el angulo de los disparos
-                    Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;
-                    Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
-                    GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
+                    for (int i = 0; i < n; i++)
+                    {                       
+                        Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;                 
+                        GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
+                        projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;                 
+                    }
 
-                    projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;
+                    StartCoroutine(Reload());
                 }
-
             }
             else if(bCanShoot) //only shoots one projectile
             {
-
                 
                 GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
                 projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
