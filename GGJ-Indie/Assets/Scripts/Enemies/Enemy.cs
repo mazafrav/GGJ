@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int damage = 1;
     [SerializeField] bool hasErraticMovement = false;
     [SerializeField] float erraticDistance = 7.0f;
+    [SerializeField] int enemyType = 0;
     private GameObject player;
 
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class Enemy : MonoBehaviour
         if(health <= 0) 
         { 
             health = 0;
-            player.GetComponent<Player>().EnemyKilled(0);
+            player.GetComponent<Player>().EnemyKilled(enemyType);
             Destroy(gameObject); 
         }
     }

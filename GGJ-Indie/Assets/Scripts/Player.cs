@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private int enemiesToGetLife = 25;
+    private int enemiesToNextHealth = 0;
 
     public int bulletSpreadCount = 0;
     public int piercingCount = 0;
@@ -97,16 +98,18 @@ public class Player : MonoBehaviour
 
     public void EnemyKilled(int enemyType)
     {
-        enemyKills += 1;
+        enemyKills++;
+        enemiesToNextHealth++;
 
         gameManager.GetComponent<GameManager>().IncreaseProgression();
         pwMng.hasKilled= true;
 
-        if (enemyKills == enemiesToGetLife)
+        if (enemiesToNextHealth == enemiesToGetLife) //ganr vida matando
         {
-            //GainHealth();
-            enemyKills = 0;
+            GainHealth();
+            enemiesToNextHealth = 0;
         }
+
         if (enemyType == 1) //anxiety
         {
             enemy1killed++;
