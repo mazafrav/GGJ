@@ -2,13 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameOverScreen : MonoBehaviour
 {
+    [SerializeField] private TMP_Text textBox;
+    private string text0 = "Face your demons in your sleep.\n";
+    private string text1 = "You will have some help in your next dream.\nBuff: DVD player I guess";
+    private string text2 = "You will have more mental clarity in your next dream.\nBuff: Speed increased";
+    private string text3 = "You will be unstoppable on your next dream.\nBuff: More damage";
+    private GameObject gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager");
+        int buff = gameManager.GetComponent<GameManager>().getActualBuff();
+        textBox.SetText(text0);
+        if (buff == 1)
+        {
+            textBox.SetText(text1);
+        }
+        if (buff == 2)
+        {
+            textBox.text = text2;
+        }
+        if (buff == 3)
+        {
+            textBox.text = text3;
+        }
     }
 
     // Update is called once per frame

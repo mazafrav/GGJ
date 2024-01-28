@@ -4352,7 +4352,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasKilled: 0
-  spawnPointsGO: []
+  spawnPointsGO:
+  - {fileID: 1895952654}
   powerUpsGO:
   - {fileID: 4745036524386211314, guid: bc39085d786cb8e459ae1b505b4d39a9, type: 3}
   - {fileID: 5201208044429941022, guid: c54732e7a56ee0c469ca4c4877cb1cae, type: 3}

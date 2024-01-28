@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float progressionPerKill = 1f;
 
+    public int actualBuff = 0;
+
     public static GameManager Instance { get; private set; }
 
     public static UIManager UiManager { get; private set; }
@@ -80,5 +82,15 @@ public class GameManager : MonoBehaviour
     public Player GetPlayer()
     {
         return player;
+    }
+
+    public void setActualBuff(int buff)
+    {
+        actualBuff = buff;
+    }
+
+    public int getActualBuff()
+    {
+        return actualBuff;
     }
 }

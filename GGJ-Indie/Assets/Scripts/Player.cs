@@ -73,6 +73,20 @@ public class Player : MonoBehaviour
         if (health <= 0) 
         {
             health = 0;
+            int buff = 0;
+            if (enemy3killed > enemy2killed)
+            {
+                buff = 3;
+            }
+            else if (enemy2killed < enemy1killed)
+            {
+                buff = 2;
+            }
+            else
+            {
+                buff = 1;
+            }
+            gameManager.GetComponent<GameManager>().setActualBuff(buff);
             SceneManager.LoadScene(3);
         }
         UpdateSprite();
