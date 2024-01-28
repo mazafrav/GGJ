@@ -21,12 +21,18 @@ public class EnemyRanged : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 direction;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip deathSound;
+
+
     // Start is called before the first frame update
     void Start()
     {
         bCanShoot = true;
         player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GameObject.Find("AudioSource").transform.GetChild(3).gameObject.GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -45,6 +51,7 @@ public class EnemyRanged : MonoBehaviour
         if(player != null) 
         {
             player.ReduceHealth(damage);
+            audioSource.PlayOneShot(deathSound);
             Destroy(gameObject); //Enemigo se destruye
         }
 
@@ -100,6 +107,7 @@ public class EnemyRanged : MonoBehaviour
             health = 0;
 
             player.GetComponent<Player>().EnemyKilled(3);
+            audioSource.PlayOneShot(deathSound);
             Destroy(gameObject); 
         }
     }

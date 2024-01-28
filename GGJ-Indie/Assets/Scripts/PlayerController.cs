@@ -35,11 +35,15 @@ public class PlayerController : MonoBehaviour
     GameManager gm;
     SpriteRenderer bulletSpriteRenderer;
 
+    AudioSource audioClips;
+    [SerializeField] AudioClip shootClip;
     private void Awake()
     {
         
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        audioClips = GameObject.Find("AudioSource").transform.GetChild(3).gameObject.GetComponent<AudioSource>();
+        Debug.Log(GameObject.Find("AudioSource").transform.GetChild(3).gameObject.name);
         bCanShoot = true;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
@@ -104,7 +108,7 @@ public class PlayerController : MonoBehaviour
                         else if (n == 4)bulletSpriteRenderer.sprite = bulletSprites[3];
                         else if (n == 5) bulletSpriteRenderer.sprite = bulletSprites[4];
                     }
-
+                    audioClips.PlayOneShot(shootClip);
                     StartCoroutine(Reload());
                 }
             }
@@ -115,6 +119,7 @@ public class PlayerController : MonoBehaviour
                 projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
                 bulletSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
                 bulletSpriteRenderer.sprite = bulletSprites[0];
+                audioClips.PlayOneShot(shootClip);
                 StartCoroutine(Reload());
             }
         }

@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.28, y: 2.27}
+    oldSize: {x: 0.76, y: 0.75666666}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -149,3 +149,4 @@ MonoBehaviour:
   hasErraticMovement: 0
   erraticDistance: 7
   enemyType: 0
+  deathSound: {fileID: 8300000, guid: 72f67612b0ae51947aa24f92dc4603be, type: 3}
