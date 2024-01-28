@@ -31,7 +31,6 @@ public class Spawner : MonoBehaviour
         playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
         previousProgress = gameManager.GetComponent<GameManager>().GetProgression();
         maxSpawnRate = spawnRate;
-        enemies.Add(normal);
         bCanSpawn = true;
     }
 
