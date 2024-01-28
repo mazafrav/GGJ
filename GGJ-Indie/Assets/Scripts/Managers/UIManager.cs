@@ -18,7 +18,6 @@ public class UIManager : MonoBehaviour
         List<Material> materials = new();
         background.GetMaterials(materials);
         materials.Add(blurMaterial);
-        Debug.Log(materials.Count);
         background.SetMaterials(materials);
     }
 

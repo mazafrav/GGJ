@@ -301,7 +301,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 2.28}
+    oldSize: {x: 19.2, y: 2.03}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1014,7 +1014,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 2.28}
+    oldSize: {x: 19.2, y: 2.03}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1144,7 +1144,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 2.28}
+    oldSize: {x: 19.2, y: 2.03}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1712,7 +1712,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 2.28}
+    oldSize: {x: 19.2, y: 2.03}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4400,6 +4400,7 @@ MonoBehaviour:
   progression: 0
   maxProgression: 100
   progressionPerKill: 1
+  actualBuff: 0
 --- !u!4 &1895952654
 Transform:
   m_ObjectHideFlags: 0
@@ -4937,6 +4938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b0889eea0e91fe4bbc11ed2602a2e8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blurMaterial: {fileID: 0}
   background: {fileID: 1343956471}
 --- !u!1 &2089323656
 GameObject:

@@ -29,14 +29,12 @@ public class DVD : MonoBehaviour
     {
         if(other.gameObject.tag != "Player")
         {
-            Debug.Log("entro en collision general");
             if (other.CompareTag("Vertical_Wall"))
             {
                 //float randomX = Random.Range(0f, 5f);
                 Vector3 randomDir = new Vector3(rb.velocity.x, rb.velocity.y * -1, 0);
                 rb.velocity = randomDir;
                 Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-                Debug.Log(randomColor.ToString());
                 spriteRenderer.color = randomColor;
             }
             else if (other.CompareTag("Horizontal_Wall"))
@@ -45,7 +43,6 @@ public class DVD : MonoBehaviour
                 Vector3 randomDir = new Vector3(rb.velocity.x * -1, rb.velocity.y, 0);
                 rb.velocity = randomDir;
                 Color randomColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-                Debug.Log(randomColor.ToString());
                 spriteRenderer.color = randomColor;
             }
 

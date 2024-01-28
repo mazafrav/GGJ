@@ -27,10 +27,6 @@ public class PowerUpManager : MonoBehaviour
             if (gm.GetProgression() == 1 && !spawned)
             {
                 List<Vector3> spawnPoints = getFurthestSpawnPoints(spawnPointsGO);
-                //foreach(Vector3 t in spawnPoints)
-                //{
-                //    Debug.Log(t.ToString());
-                //}
 
                 List<int> powerUps = getRandomPowerUps();
                 for (int i = 0; i < spawnPoints.Count; i++)
@@ -58,15 +54,7 @@ public class PowerUpManager : MonoBehaviour
         int index = -1;
         float maxDistance = 0;
         float currentDistance = 0;
-        //foreach(Transform t in spawnPoints)
-        //{
-        //    currentDistance = Vector3.Distance(t.position, player.transform.position);
-        //    if (currentDistance > maxDistance)
-        //    {
-        //        maxDistance = currentDistance;
-        //        currentPoint = t;
-        //    }
-        //}
+
         for (int i = 0; i < spawnPoints.Count; i++)
         {
             currentDistance = Vector3.Distance(spawnPoints[i].position, player.transform.position);
@@ -78,8 +66,10 @@ public class PowerUpManager : MonoBehaviour
             }
         }
         furthestPoints.Add(currentPoint.position);
-
         spawnPoints.RemoveAt(index);
+
+        currentDistance = 0;
+        maxDistance = 0;
 
         foreach (Transform t in spawnPoints)
         {

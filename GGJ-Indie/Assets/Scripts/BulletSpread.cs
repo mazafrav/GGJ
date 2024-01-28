@@ -22,7 +22,6 @@ public class BulletSpread : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("APLICANDO TRIPLE DISPARO");
             Player player = other.GetComponent<Player>();
             if (player != null && player.bulletSpreadCount < maxBulletSpread)
             {

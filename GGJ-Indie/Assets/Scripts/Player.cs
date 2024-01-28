@@ -48,7 +48,6 @@ public class Player : MonoBehaviour
         spriteRenderer.sprite = faces[health-1];
 
         Vector3 v = Vector3.up;
-        Debug.Log("up" + v);
         //angulo
         const double a = 45f;
         //num balas
@@ -86,7 +85,7 @@ public class Player : MonoBehaviour
             {
                 buff = 1;
             }
-            gameManager.GetComponent<GameManager>().setActualBuff(buff);
+            gameManager.GetComponent<GameManager>().setCurrentBuff(buff);
             SceneManager.LoadScene(3);
         }
         UpdateSprite();

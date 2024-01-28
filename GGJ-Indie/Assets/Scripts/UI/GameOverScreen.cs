@@ -20,7 +20,7 @@ public class GameOverScreen : MonoBehaviour
         textBox.SetText(text0);
         if (gameManager.GetComponent<GameManager>() != null)
         {
-            buff = gameManager.GetComponent<GameManager>().getActualBuff();
+            buff = gameManager.GetComponent<GameManager>().getCurrentBuff();
 
             if (buff == 1)
             {

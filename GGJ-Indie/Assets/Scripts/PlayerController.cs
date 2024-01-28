@@ -72,7 +72,6 @@ public class PlayerController : MonoBehaviour
             if(player.bulletSpreadCount > 1) 
             {
                 Vector3 v = player.transform.up;
-                Debug.Log("up" + v);
                 //angulo
                 const double a = 60f;
                 //num balas
@@ -84,7 +83,6 @@ public class PlayerController : MonoBehaviour
                     //vec es el angulo de los disparos
                     Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;
                     Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
-                    Debug.Log(vec);
                     GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
 
                     projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;

@@ -48,7 +48,6 @@ public class Spawner : MonoBehaviour
             {
                 GameObject enemy = ChooseEnemy();
                 playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
-                Debug.Log(playerProgress);
 
                if (playerProgress != previousProgress)
                {
