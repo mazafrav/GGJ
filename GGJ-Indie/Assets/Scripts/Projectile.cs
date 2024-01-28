@@ -9,13 +9,16 @@ public class Projectile : MonoBehaviour
     int piercingCount = 0;
     Player player;
 
+    GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         piercingCount = player.piercingCount;
 
-        if (PlayerPrefs.HasKey("buff") && PlayerPrefs.GetInt("buff") == 2)
+        if (gm.getCurrentBuff() == 3)
         {
             damage = 2;
         }

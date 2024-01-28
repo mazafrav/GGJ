@@ -32,18 +32,25 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private GameObject gameManager;
+    private GameManager gameManager;
     private PowerUpManager pwMng;
 
     private int enemy1killed = 0;
     private int enemy2killed = 0;
     private int enemy3killed = 0;
 
+    [SerializeField]
+    private GameObject DVD;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        gameManager = GameObject.Find("GameManager");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (gameManager.getCurrentBuff() == 1)
+        {
+            Instantiate(DVD, new Vector3(0,0,0), Quaternion.identity);
+        }
         pwMng = GameObject.Find("PowerUpManager").GetComponent<PowerUpManager>();
         spriteRenderer.sprite = faces[health-1];
 
@@ -77,7 +84,7 @@ public class Player : MonoBehaviour
             {
                 buff = 3;
             }
-            else if (enemy2killed < enemy1killed)
+            else if (enemy2killed > enemy1killed)
             {
                 buff = 2;
             }
@@ -85,8 +92,8 @@ public class Player : MonoBehaviour
             {
                 buff = 1;
             }
-            gameManager.GetComponent<GameManager>().setCurrentBuff(buff);
-            SceneManager.LoadScene(3);
+            gameManager.setCurrentBuff(buff);
+            gameManager.GameOver();
         }
         UpdateSprite();
     }
@@ -114,7 +121,7 @@ public class Player : MonoBehaviour
         enemyKills++;
         enemiesToNextHealth++;
 
-        gameManager.GetComponent<GameManager>().IncreaseProgression();
+        gameManager.IncreaseProgression();
         pwMng.hasKilled= true;
 
         if (enemiesToNextHealth == enemiesToGetLife) //ganr vida matando
@@ -123,10 +130,10 @@ public class Player : MonoBehaviour
             enemiesToNextHealth = 0;
         }
 
-        if (enemyType == 1) //anxiety
+        if (enemyType == 1) //depression
         {
             enemy1killed++;
-        } else if (enemyType == 2) //depression
+        } else if (enemyType == 2) //anxiety
         {
             enemy2killed++;
         } else if (enemyType == 3) //elotro

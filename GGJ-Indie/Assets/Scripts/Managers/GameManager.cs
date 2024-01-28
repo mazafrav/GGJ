@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float progressionPerKill = 1f;
 
-    public static int currentBuff = -1;
+    public static int currentBuff = 0;
 
     public static GameManager Instance { get; private set; }
 
@@ -95,5 +95,10 @@ public class GameManager : MonoBehaviour
     public int getCurrentBuff()
     {
         return currentBuff;
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(3);
     }
 }
