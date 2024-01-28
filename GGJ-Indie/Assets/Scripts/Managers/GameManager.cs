@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnEnemyKill(Enemy enemy)
-    {
+    {      
         progression = Math.Max(progression + progressionPerKill, maxProgression);
     }
 
@@ -100,5 +100,13 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene(3);
+    }
+
+
+    public void Win()
+    {
+       
+        SceneManager.LoadScene(2);
+        
     }
 }

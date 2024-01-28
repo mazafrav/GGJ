@@ -152,6 +152,7 @@ MonoBehaviour:
   rangeToShoot: 7
   shootCooldown: 2
   projectile: {fileID: 7327870393572969810, guid: f01c3c5c0860f1942bbf3a2dd1f58045, type: 3}
+  deathSound: {fileID: 8300000, guid: 72f67612b0ae51947aa24f92dc4603be, type: 3}
 --- !u!50 &7595167828254762614
 Rigidbody2D:
   serializedVersion: 4

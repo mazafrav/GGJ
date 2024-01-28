@@ -26,15 +26,15 @@ public class PowerUpManager : MonoBehaviour
     {
         if (gm != null)
         {
-            if (gm.GetProgression() == 25 && !spawned)
+            if (gm.GetProgression() == 15 && !spawned)
             {
                 SpawnPowerUps();
             }
-            else if (gm.GetProgression() == 50 && !spawned)
+            else if (gm.GetProgression() == 40 && !spawned)
             {
                 SpawnPowerUps();
             }
-            else if (gm.GetProgression() == 75 && !spawned)
+            else if (gm.GetProgression() == 70 && !spawned)
             {
                 SpawnPowerUps();
 

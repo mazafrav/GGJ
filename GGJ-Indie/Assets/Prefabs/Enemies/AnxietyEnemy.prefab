@@ -149,3 +149,4 @@ MonoBehaviour:
   hasErraticMovement: 1
   erraticDistance: 10
   enemyType: 2
+  deathSound: {fileID: 8300000, guid: 72f67612b0ae51947aa24f92dc4603be, type: 3}

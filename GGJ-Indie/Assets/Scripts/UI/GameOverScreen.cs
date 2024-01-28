@@ -8,7 +8,7 @@ public class GameOverScreen : MonoBehaviour
 {
     [SerializeField] private TMP_Text textBox;
     private string text0 = "Face your demons in your sleep.\n";
-    private string text1 = "You did great for tonight, but the path does not end here\nYou will have some help in your next dream.\nBuff: DVD player I guess";
+    private string text1 = "You did great for tonight, but the path does not end here\nYou will have some help in your next dream.\nBuff: DVD companion pet friend";
     private string text2 = "You did great for tonight, but the path does not end here\nYou will have more mental clarity in your next dream.\nBuff: Speed increased";
     private string text3 = "You did great for tonight, but the path does not end here\nYou will be unstoppable on your next dream.\nBuff: More damage";
     private GameObject gameManager;
@@ -45,12 +45,12 @@ public class GameOverScreen : MonoBehaviour
 
     public void NewDream()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void TitleScreen()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
 }

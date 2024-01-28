@@ -19,6 +19,6 @@ public class WinMenu : MonoBehaviour
 
     public void TitleScreen()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
