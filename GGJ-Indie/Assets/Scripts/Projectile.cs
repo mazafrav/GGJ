@@ -9,17 +9,18 @@ public class Projectile : MonoBehaviour
     int piercingCount = 0;
     Player player;
 
-    [SerializeField] private float buffPercentage = 0.5f;
+    GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         piercingCount = player.piercingCount;
 
-        if (PlayerPrefs.HasKey("buff") && PlayerPrefs.GetInt("buff") == 2)
+        if (gm.getCurrentBuff() == 3)
         {
-            transform.localScale = new Vector3(transform.localScale.x * (1 + buffPercentage),
-                transform.localScale.y * (1 + buffPercentage), 0);
+            damage = 2;
         }
     }
 
@@ -47,7 +48,7 @@ public class Projectile : MonoBehaviour
                     enemyRanged.ReduceHealth(damage);
                 }
 
-                if(collision.tag != "Pet")Destroy(gameObject); //Se destruye el projectil
+                if(collision.tag != "Pet" && collision.tag != "PowerUp")Destroy(gameObject); //Se destruye el projectil
             }
             else if (player != null && piercingCount > 0)
             {

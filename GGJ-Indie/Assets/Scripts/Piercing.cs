@@ -21,7 +21,6 @@ public class Piercing : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("APLICANDO PIERCING");
             Player player = other.GetComponent<Player>();
             if (player != null)
             {

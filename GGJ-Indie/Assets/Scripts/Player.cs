@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private int enemiesToGetLife = 25;
+    private int enemiesToNextHealth = 0;
 
     public int bulletSpreadCount = 0;
     public int piercingCount = 0;
@@ -31,33 +32,38 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private GameObject gameManager;
+    private GameManager gameManager;
+    private PowerUpManager pwMng;
 
     private int enemy1killed = 0;
     private int enemy2killed = 0;
     private int enemy3killed = 0;
 
+    [SerializeField]
+    private GameObject DVD;
+
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        gameManager = GameObject.Find("GameManager");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (gameManager.getCurrentBuff() == 1)
+        {
+            Instantiate(DVD, new Vector3(0,0,0), Quaternion.identity);
+        }
+        pwMng = GameObject.Find("PowerUpManager").GetComponent<PowerUpManager>();
         spriteRenderer.sprite = faces[health-1];
 
         Vector3 v = Vector3.up;
-        Debug.Log("up" + v);
         //angulo
         const double a = 45f;
         //num balas
         const int n = 8;
-        Debug.DrawLine(transform.position, v * 100, Color.green, 100);
         for (int i = 0; i < n; i++)
         {
             Color color = (i == 0 ? Color.blue : i == n - 1 ? Color.magenta : Color.cyan);
             //vec es el angulo de los disparos
             Vector3 vec = Quaternion.Euler(0, 0, (float) (-a / 2 + (a / (n - 1))  * i)) * v;
-            Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
-            Debug.Log(v);
         }
     }
 
@@ -73,7 +79,21 @@ public class Player : MonoBehaviour
         if (health <= 0) 
         {
             health = 0;
-            SceneManager.LoadScene(3);
+            int buff = 0;
+            if (enemy3killed > enemy2killed)
+            {
+                buff = 3;
+            }
+            else if (enemy2killed > enemy1killed)
+            {
+                buff = 2;
+            }
+            else
+            {
+                buff = 1;
+            }
+            gameManager.setCurrentBuff(buff);
+            gameManager.GameOver();
         }
         UpdateSprite();
     }
@@ -98,19 +118,22 @@ public class Player : MonoBehaviour
 
     public void EnemyKilled(int enemyType)
     {
-        enemyKills += 1;
+        enemyKills++;
+        enemiesToNextHealth++;
 
-        gameManager.GetComponent<GameManager>().IncreaseProgression();
+        gameManager.IncreaseProgression();
+        pwMng.hasKilled= true;
 
-        if (enemyKills == enemiesToGetLife)
+        if (enemiesToNextHealth == enemiesToGetLife) //ganr vida matando
         {
-            //GainHealth();
-            enemyKills = 0;
+            GainHealth();
+            enemiesToNextHealth = 0;
         }
-        if (enemyType == 1) //anxiety
+
+        if (enemyType == 1) //depression
         {
             enemy1killed++;
-        } else if (enemyType == 2) //depression
+        } else if (enemyType == 2) //anxiety
         {
             enemy2killed++;
         } else if (enemyType == 3) //elotro

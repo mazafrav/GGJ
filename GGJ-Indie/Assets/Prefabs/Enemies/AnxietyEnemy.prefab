@@ -148,3 +148,4 @@ MonoBehaviour:
   damage: 1
   hasErraticMovement: 1
   erraticDistance: 10
+  enemyType: 2

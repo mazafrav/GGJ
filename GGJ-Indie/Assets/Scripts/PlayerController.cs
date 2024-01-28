@@ -4,32 +4,50 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    float velX, velY;
-    Rigidbody2D rb;
+    private float velX, velY;
+    private Rigidbody2D rb;
+    private bool bCanShoot;
+
+    [SerializeField]
+    float fireRate;
 
     [SerializeField]
     float speed;
+
+    [SerializeField]
+    private float speedBuffPercentage = 0.2f;
 
     [SerializeField]
     float bulletSpeed;
 
     [SerializeField]
     GameObject projectile;
+    [SerializeField]
+    Sprite[] bulletSprites;
 
     Player player;
 
     Vector3 direction;
 
+    GameManager gm;
+    SpriteRenderer bulletSpriteRenderer;
+
     private void Awake()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
+        bCanShoot = true;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (gm.getCurrentBuff() == 2)
+        {
+            speed *= (1 + speedBuffPercentage);
+        }
     }
 
     // Update is called once per frame
@@ -62,35 +80,49 @@ public class PlayerController : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             if(player.bulletSpreadCount > 1) 
             {
                 Vector3 v = player.transform.up;
-                Debug.Log("up" + v);
                 //angulo
                 const double a = 60f;
                 //num balas
                 int n = player.bulletSpreadCount;
-                Debug.DrawLine(transform.position, v * 100, Color.green, 100);
-                for (int i = 0; i < n; i++)
+
+                if (bCanShoot)
                 {
-                    Color color = (i == 0 ? Color.blue : i == n - 1 ? Color.magenta : Color.cyan);
-                    //vec es el angulo de los disparos
-                    Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;
-                    Debug.DrawLine(transform.position, vec * 100, Color.white, 100);
-                    Debug.Log(vec);
-                    GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
+                    for (int i = 0; i < n; i++)
+                    {                       
+                        Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;                 
+                        GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
+                        projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;      
+                        bulletSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
+                        if (n == 2) bulletSpriteRenderer.sprite = bulletSprites[1];
+                        else if (n == 3)bulletSpriteRenderer.sprite = bulletSprites[2];
+                        else if (n == 4)bulletSpriteRenderer.sprite = bulletSprites[3];
+                        else if (n == 5) bulletSpriteRenderer.sprite = bulletSprites[4];
+                    }
 
-                    projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;
+                    StartCoroutine(Reload());
                 }
-
             }
-            else //only shoots one projectile
+            else if(bCanShoot) //only shoots one projectile
             {
+                //spriteRenderer.sprite = bulletSprites[0];
                 GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
-                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;                
+                projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+                bulletSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer.sprite = bulletSprites[0];
+                StartCoroutine(Reload());
             }
         }
+    }
+
+    IEnumerator Reload()
+    {
+        bCanShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        bCanShoot = true;
     }
 }

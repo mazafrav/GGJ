@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float progressionPerKill = 1f;
+
+    public static int currentBuff = 0;
 
     public static GameManager Instance { get; private set; }
 
@@ -45,7 +48,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        UiManager.UpdateBackground(progression.Equals(0f) ? 0f : Math.Min(progression / maxProgression, 1));
+        if (SceneManager.GetActiveScene().name == "Game")
+        {
+            UiManager.UpdateBackground(progression.Equals(0f) ? 0f : Math.Min(progression / maxProgression, 1));
+        }
         //progression += Time.deltaTime * 5;
         // Debug.Log(progression);
     }
@@ -59,7 +65,6 @@ public class GameManager : MonoBehaviour
     private void OnEnemyKill(Enemy enemy)
     {
         progression = Math.Max(progression + progressionPerKill, maxProgression);
-        Debug.Log("Progression: " + progression);
     }
 
     public float GetMaxProgression()
@@ -80,5 +85,20 @@ public class GameManager : MonoBehaviour
     public Player GetPlayer()
     {
         return player;
+    }
+
+    public void setCurrentBuff(int buff)
+    {
+        currentBuff = buff;
+    }
+
+    public int getCurrentBuff()
+    {
+        return currentBuff;
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(3);
     }
 }
