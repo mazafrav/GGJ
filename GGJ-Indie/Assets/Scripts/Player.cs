@@ -83,11 +83,11 @@ public class Player : MonoBehaviour
         {
             health = 0;
             int buff = 0;
-            if (enemy3killed > enemy2killed)
+            if (enemy3killed > enemy2killed * 0.8)
             {
                 buff = 3;
             }
-            else if (enemy2killed > enemy1killed)
+            else if (enemy2killed > enemy1killed * 0.7)
             {
                 buff = 2;
             }
