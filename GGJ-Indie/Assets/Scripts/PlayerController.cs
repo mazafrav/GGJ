@@ -12,29 +12,45 @@ public class PlayerController : MonoBehaviour
     float fireRate;
 
     [SerializeField]
+    double a = 30f;
+
+    [SerializeField]
     float speed;
+
+    [SerializeField]
+    private float speedBuffPercentage = 0.2f;
 
     [SerializeField]
     float bulletSpeed;
 
     [SerializeField]
     GameObject projectile;
+    [SerializeField]
+    Sprite[] bulletSprites;
 
     Player player;
 
     Vector3 direction;
 
+    GameManager gm;
+    SpriteRenderer bulletSpriteRenderer;
+
     private void Awake()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         bCanShoot = true;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (gm.getCurrentBuff() == 2)
+        {
+            speed *= (1 + speedBuffPercentage);
+        }
     }
 
     // Update is called once per frame
@@ -72,18 +88,21 @@ public class PlayerController : MonoBehaviour
             if(player.bulletSpreadCount > 1) 
             {
                 Vector3 v = player.transform.up;
-                //angulo
-                const double a = 60f;
                 //num balas
                 int n = player.bulletSpreadCount;
-              
+
                 if (bCanShoot)
                 {
                     for (int i = 0; i < n; i++)
                     {                       
                         Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;                 
                         GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
-                        projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;                 
+                        projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;      
+                        bulletSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
+                        if (n == 2) bulletSpriteRenderer.sprite = bulletSprites[1];
+                        else if (n == 3)bulletSpriteRenderer.sprite = bulletSprites[2];
+                        else if (n == 4)bulletSpriteRenderer.sprite = bulletSprites[3];
+                        else if (n == 5) bulletSpriteRenderer.sprite = bulletSprites[4];
                     }
 
                     StartCoroutine(Reload());
@@ -91,9 +110,11 @@ public class PlayerController : MonoBehaviour
             }
             else if(bCanShoot) //only shoots one projectile
             {
-                
+                //spriteRenderer.sprite = bulletSprites[0];
                 GameObject projectile_prefab = Instantiate(projectile, transform.position, transform.rotation);
                 projectile_prefab.GetComponent<Rigidbody2D>().velocity = projectile_prefab.transform.up * bulletSpeed;
+                bulletSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
+                bulletSpriteRenderer.sprite = bulletSprites[0];
                 StartCoroutine(Reload());
             }
         }

@@ -51,12 +51,12 @@ public class DVD : MonoBehaviour
                 Enemy enemy = other.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.ReduceHhealth(damage);
+                    enemy.ReduceHealth(damage);
                 }
                 EnemyRanged enemyRanged = other.GetComponent<EnemyRanged>();
                 if (enemyRanged != null)
                 {
-                    enemyRanged.ReduceHhealth(damage);
+                    enemyRanged.ReduceHealth(damage);
                 }
             }
         }
