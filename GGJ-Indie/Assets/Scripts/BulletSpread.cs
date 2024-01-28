@@ -27,6 +27,7 @@ public class BulletSpread : MonoBehaviour
             {
                 
                 player.bulletSpreadCount++;
+                GameObject.Find("PowerUpManager").GetComponent<PowerUpManager>().PickPowerUp();
                 Destroy(gameObject);
             }
         }
