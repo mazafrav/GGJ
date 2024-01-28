@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -925811383
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: de64d18944581d54d8e271ceaf10b259, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -152,6 +152,7 @@ MonoBehaviour:
   rangeToShoot: 7
   shootCooldown: 2
   projectile: {fileID: 7327870393572969810, guid: f01c3c5c0860f1942bbf3a2dd1f58045, type: 3}
+  deathSound: {fileID: 8300000, guid: 72f67612b0ae51947aa24f92dc4603be, type: 3}
 --- !u!50 &7595167828254762614
 Rigidbody2D:
   serializedVersion: 4

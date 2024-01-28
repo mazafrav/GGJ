@@ -8,9 +8,9 @@ public class GameOverScreen : MonoBehaviour
 {
     [SerializeField] private TMP_Text textBox;
     private string text0 = "Face your demons in your sleep.\n";
-    private string text1 = "You did great for tonight, but the path does not end here\nYou will have some help in your next dream.\n\nBuff: Dream companion";
-    private string text2 = "You did great for tonight, but the path does not end here\nYou will have more mental clarity in your next dream.\n\nBuff: Speed increased";
-    private string text3 = "You did great for tonight, but the path does not end here\nYou will be unstoppable on your next dream.\n\nBuff: More damage";
+    private string text1 = "You did great for tonight, but the path does not end here\nYou will have some help in your next dream.\nBuff: DVD player I guess";
+    private string text2 = "You did great for tonight, but the path does not end here\nYou will have more mental clarity in your next dream.\nBuff: Speed increased";
+    private string text3 = "You did great for tonight, but the path does not end here\nYou will be unstoppable on your next dream.\nBuff: More damage";
     private GameObject gameManager;
     // Start is called before the first frame update
     void Start()
