@@ -60,13 +60,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Aim();
         Shoot();
     }
 
     private void FixedUpdate()
     {
         Move();
-        Aim();
     }
 
     private void Move()
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(velX * speed, velY * speed);
     }
 
-    private void Aim()
+    public void Aim()
     {
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
