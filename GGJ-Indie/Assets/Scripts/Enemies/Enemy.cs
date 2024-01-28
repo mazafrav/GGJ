@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] int health = 2;
+    [SerializeField] float health = 2;
     [SerializeField] float speed = 3.0f;
     [SerializeField] int damage = 1;
     [SerializeField] bool hasErraticMovement = false;
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void ReduceHealth(int amount)
+    public void ReduceHealth(float amount)
     {
         health -= amount;     
         if(health <= 0) 

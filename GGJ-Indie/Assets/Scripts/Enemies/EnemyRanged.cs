@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyRanged : MonoBehaviour
 {
-    [SerializeField] int health = 2;
+    [SerializeField] float health = 2;
     [SerializeField] float movementSpeed = 3.0f;
     [SerializeField] float bulletSpeed = 3.0f;
     [SerializeField] int damage = 1;
@@ -99,7 +99,7 @@ public class EnemyRanged : MonoBehaviour
         bCanShoot = true;
     }
 
-    public void ReduceHealth(int amount)
+    public void ReduceHealth(float amount)
     {
         health -= amount;
         if (health <= 0) 
