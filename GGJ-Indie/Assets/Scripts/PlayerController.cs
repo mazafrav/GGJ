@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     float fireRate;
 
     [SerializeField]
+    double a = 30f;
+
+    [SerializeField]
     float speed;
 
     [SerializeField]
@@ -84,9 +87,22 @@ public class PlayerController : MonoBehaviour
         {
             if(player.bulletSpreadCount > 1) 
             {
+                float bulletDamage = 1;
+                if (player.bulletSpreadCount == 1)
+                {
+                    bulletDamage = 1;
+                } else if (player.bulletSpreadCount == 2)
+                {
+                    bulletDamage = 0.8f;
+                } else if (player.bulletSpreadCount == 3)
+                {
+                    bulletDamage = 0.7f;
+                }
+                else if (player.bulletSpreadCount == 4)
+                {
+                    bulletDamage = 0.6f;
+                }
                 Vector3 v = player.transform.up;
-                //angulo
-                const double a = 60f;
                 //num balas
                 int n = player.bulletSpreadCount;
 
@@ -96,6 +112,7 @@ public class PlayerController : MonoBehaviour
                     {                       
                         Vector3 vec = Quaternion.Euler(0, 0, (float)(-a / 2 + (a / (n - 1)) * i)) * v;                 
                         GameObject projectile_prefab = Instantiate(projectile, transform.position,Quaternion.identity);
+                        projectile_prefab.GetComponent<Projectile>().damage = bulletDamage;
                         projectile_prefab.GetComponent<Rigidbody2D>().velocity = vec * bulletSpeed;      
                         bulletSpriteRenderer = projectile.GetComponent<SpriteRenderer>();
                         if (n == 2) bulletSpriteRenderer.sprite = bulletSprites[1];

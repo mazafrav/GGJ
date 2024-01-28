@@ -12,11 +12,13 @@ public class PowerUpManager : MonoBehaviour
     Player player;
 
     [SerializeField] private GameObject[] powerUpsGO;
+    private List<GameObject> powerUpSpawned;
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        powerUpSpawned = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -24,18 +26,18 @@ public class PowerUpManager : MonoBehaviour
     {
         if (gm != null)
         {
-            if (gm.GetProgression() == 1 && !spawned)
+            if (gm.GetProgression() == 25 && !spawned)
             {
-                List<Vector3> spawnPoints = getFurthestSpawnPoints(spawnPointsGO);
+                SpawnPowerUps();
+            }
+            else if (gm.GetProgression() == 50 && !spawned)
+            {
+                SpawnPowerUps();
+            }
+            else if (gm.GetProgression() == 75 && !spawned)
+            {
+                SpawnPowerUps();
 
-                List<int> powerUps = getRandomPowerUps();
-                for (int i = 0; i < spawnPoints.Count; i++)
-                {
-                    Instantiate(powerUpsGO[powerUps[i]], spawnPoints[i], Quaternion.identity);
-                }
-                spawned = true;
-                hasKilled = false;
-                StartCoroutine(SpawnReset());
             }
 
         }
@@ -116,5 +118,32 @@ public class PowerUpManager : MonoBehaviour
         result.Add(random1);
         result.Add(random2);
         return result;
+    }
+
+    void SpawnPowerUps()
+    {
+        List<Vector3> spawnPoints = getFurthestSpawnPoints(spawnPointsGO);
+
+        List<int> powerUps = getRandomPowerUps();
+        for (int i = 0; i < spawnPoints.Count; i++)
+        {
+            GameObject go = Instantiate(powerUpsGO[powerUps[i]], spawnPoints[i], Quaternion.identity);
+            powerUpSpawned.Add(go);
+        }
+        spawned = true;
+        hasKilled = false;
+        StartCoroutine(SpawnReset());
+    }
+
+    public void PickPowerUp()
+    {
+        foreach (GameObject go in powerUpSpawned)
+        {
+            if (go != null)
+            {
+                Destroy(go.gameObject);
+            }
+        }
+        powerUpSpawned.Clear();
     }
 }

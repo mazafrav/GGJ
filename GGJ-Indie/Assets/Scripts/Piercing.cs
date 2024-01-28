@@ -28,6 +28,7 @@ public class Piercing : MonoBehaviour
                 {
                     player.piercingCount++;
                 }
+                GameObject.Find("PowerUpManager").GetComponent<PowerUpManager>().PickPowerUp();
                 Destroy(gameObject);
             }
         }

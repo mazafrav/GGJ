@@ -31,7 +31,8 @@ public class Pet : MonoBehaviour
               newPet.SetRotateSpeed();
               newPet.SetClockwiseRotation();
            }
-           Destroy(gameObject); //se destruye el power up
+            GameObject.Find("PowerUpManager").GetComponent<PowerUpManager>().PickPowerUp();
+            Destroy(gameObject); //se destruye el power up
         }       
     }
 }

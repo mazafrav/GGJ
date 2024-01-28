@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] int damage = 1;
+    [SerializeField] public float damage = 1;
 
     int piercingCount = 0;
     Player player;
