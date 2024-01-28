@@ -30,11 +30,11 @@ public class PowerUpManager : MonoBehaviour
             {
                 SpawnPowerUps();
             }
-            else if (gm.GetProgression() == 40 && !spawned)
+            else if (gm.GetProgression() == 30 && !spawned)
             {
                 SpawnPowerUps();
             }
-            else if (gm.GetProgression() == 70 && !spawned)
+            else if (gm.GetProgression() == 60 && !spawned)
             {
                 SpawnPowerUps();
 
