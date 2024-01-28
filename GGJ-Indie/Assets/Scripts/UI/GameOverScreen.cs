@@ -16,19 +16,24 @@ public class GameOverScreen : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
-        int buff = gameManager.GetComponent<GameManager>().getActualBuff();
+        int buff = 0;
         textBox.SetText(text0);
-        if (buff == 1)
+        if (gameManager.GetComponent<GameManager>() != null)
         {
-            textBox.SetText(text1);
-        }
-        if (buff == 2)
-        {
-            textBox.text = text2;
-        }
-        if (buff == 3)
-        {
-            textBox.text = text3;
+            buff = gameManager.GetComponent<GameManager>().getActualBuff();
+
+            if (buff == 1)
+            {
+                textBox.text = text1;
+            }
+            if (buff == 2)
+            {
+                textBox.text = text2;
+            }
+            if (buff == 3)
+            {
+                textBox.text = text3;
+            }
         }
     }
 

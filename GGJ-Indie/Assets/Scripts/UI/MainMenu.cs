@@ -16,19 +16,23 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         gameManager = GameObject.Find("GameManager");
-        int buff = gameManager.GetComponent<GameManager>().getActualBuff();
+        int buff = 0;
         textBox.SetText(text0);
-        if (buff == 1)
-        {
-            textBox.text = text1;
-        }
-        if (buff == 2)
-        {
-            textBox.text = text2;
-        }
-        if (buff == 3)
-        {
-            textBox.text = text3;
+        if (gameManager.GetComponent<GameManager>() != null) {
+            buff = gameManager.GetComponent<GameManager>().getActualBuff();
+
+            if (buff == 1)
+            {
+                textBox.text = text1;
+            }
+            if (buff == 2)
+            {
+                textBox.text = text2;
+            }
+            if (buff == 3)
+            {
+                textBox.text = text3;
+            }
         }
     }
     public void PlayGame()
