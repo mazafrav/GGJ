@@ -20,6 +20,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] float spawnRate;
     [SerializeField] float minSpawnRate;
+
+    bool depressionadded = false;
+    bool anxietyadded = false;
+    bool rangedadded = false;
     Vector3 direction;
 
     // Start is called before the first frame update
@@ -45,18 +49,25 @@ public class Spawner : MonoBehaviour
 
             if (bCanSpawn)
             {
-                if (playerProgress > 20.0f && enemies.Count < 1)
+
+                if (playerProgress > 20.0f && !depressionadded)
                 {
                     enemies.Add(depression);
+                    depressionadded = true;
                 }
-                if (playerProgress > 40.0f && enemies.Count < 2)
+                if (playerProgress > 40.0f && !anxietyadded)
                 {
                     enemies.Add(anxiety);
+                    anxietyadded = true;
                 }
-                if (playerProgress > 60.0f && enemies.Count < 3)
+                if (playerProgress > 60.0f && !rangedadded)
                 {
                     enemies.Add(ranged);
+                    rangedadded = true;
                 }
+
+
+
 
                 GameObject enemy = ChooseEnemy();
                 playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
