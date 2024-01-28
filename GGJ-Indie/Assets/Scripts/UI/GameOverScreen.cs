@@ -45,12 +45,12 @@ public class GameOverScreen : MonoBehaviour
 
     public void NewDream()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void TitleScreen()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
 }

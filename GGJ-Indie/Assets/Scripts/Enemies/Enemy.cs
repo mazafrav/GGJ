@@ -11,11 +11,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float erraticDistance = 7.0f;
     [SerializeField] int enemyType = 0;
     private GameObject player;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
