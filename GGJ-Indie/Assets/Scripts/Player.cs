@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
                 buff = 1;
             }
             gameManager.setCurrentBuff(buff);
+            Cursor.visible = true;
             gameManager.GameOver();
         }
         UpdateSprite();
