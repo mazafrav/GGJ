@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     float fireRate;
 
     [SerializeField]
+    double a = 30f;
+
+    [SerializeField]
     float speed;
 
     [SerializeField]
@@ -85,8 +88,6 @@ public class PlayerController : MonoBehaviour
             if(player.bulletSpreadCount > 1) 
             {
                 Vector3 v = player.transform.up;
-                //angulo
-                const double a = 60f;
                 //num balas
                 int n = player.bulletSpreadCount;
 
