@@ -12,10 +12,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] int enemyType = 0;
     private GameObject player;
 
+    AudioSource audioSource;
+    [SerializeField] AudioClip deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+
+        audioSource = GameObject.Find("AudioSource").transform.GetChild(3).gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -38,6 +43,7 @@ public class Enemy : MonoBehaviour
         if(player != null) 
         {
             player.ReduceHealth(damage);
+            audioSource.PlayOneShot(deathSound);
             Destroy(gameObject); //Enemigo se destruye
         }
     }
@@ -49,6 +55,7 @@ public class Enemy : MonoBehaviour
         { 
             health = 0;
             player.GetComponent<Player>().EnemyKilled(enemyType);
+            audioSource.PlayOneShot(deathSound);
             Destroy(gameObject); 
         }
     }

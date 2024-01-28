@@ -32,6 +32,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.visible = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         isPaused = true;
@@ -39,6 +40,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void ResumeGame()
     {
+        Cursor.visible=false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;  
@@ -48,6 +50,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isPaused = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }

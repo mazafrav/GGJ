@@ -259,6 +259,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a674425571359674aa92710334669f15, type: 3}
   - {fileID: 21300000, guid: 29efb2fb7645d8645af2c58c244b4c49, type: 3}
   - {fileID: 21300000, guid: ed583e964a550c54eaf70c36f0b2a9fe, type: 3}
+  shootClip: {fileID: 8300000, guid: 7f948f72e3aa69d46adae52a3e1d1bb3, type: 3}
 --- !u!114 &2345648239750370539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,4 +284,4 @@ MonoBehaviour:
   enemiesToGetLife: 25
   bulletSpreadCount: 1
   piercingCount: 0
-  DVD: {fileID: 0}
+  DVD: {fileID: 5493158875430517678, guid: 6177ad8a00e09bc40810d2ce5ebe4c0f, type: 3}

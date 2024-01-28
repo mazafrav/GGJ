@@ -20,6 +20,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] float spawnRate;
     [SerializeField] float minSpawnRate;
+
+    bool depressionadded = false;
+    bool anxietyadded = false;
+    bool rangedadded = false;
     Vector3 direction;
 
     // Start is called before the first frame update
@@ -45,6 +49,26 @@ public class Spawner : MonoBehaviour
 
             if (bCanSpawn)
             {
+
+                if (playerProgress > 10.0f && !depressionadded)
+                {
+                    enemies.Add(depression);
+                    depressionadded = true;
+                }
+                if (playerProgress > 25.0f && !anxietyadded)
+                {
+                    enemies.Add(anxiety);
+                    anxietyadded = true;
+                }
+                if (playerProgress > 50.0f && !rangedadded)
+                {
+                    enemies.Add(ranged);
+                    rangedadded = true;
+                }
+
+
+
+
                 GameObject enemy = ChooseEnemy();
                 playerProgress = gameManager.GetComponent<GameManager>().GetProgression();
 
@@ -54,30 +78,16 @@ public class Spawner : MonoBehaviour
                         spawnRate = maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - minSpawnRate);
 
                     previousProgress = playerProgress;
-
-                    if(playerProgress >= 20.0f && playerProgress <= 20.5f)
-                    {
-                        enemies.Add(depression);
-                        
-                    }else if(playerProgress >= 40.0f && playerProgress <= 40.5f)
-                    {
-                        enemies.Add(anxiety);
-                    }else if (playerProgress >= 60.0f && playerProgress <= 60.5f)
-                    {
-                        enemies.Add(ranged);
-                    }else if(playerProgress >= 80.0f && playerProgress <= 80.5f)
-                    {
-                        enemies.Remove(normal);  
-                    }
                }
-                
-                float randomX = Random.Range(-7.7f, 7.7f);//- (player.transform.position + direction).x;
-                float randomY = Random.Range(-4.0f, 4.0f); //- (player.transform.position + direction).y;
-                Vector3 posToSpawn = new Vector3(randomX * radius, randomY + radius, 0.0f);
-                Instantiate(enemy, posToSpawn, Quaternion.identity);
-               
-                //Debug.DrawLine(player.transform.position + direction, posToSpawn, Color.red, Time.deltaTime, false);
+         
+                Vector3 v = player.transform.up;
+                float angle = Random.Range(0, 360.0f);//- (player.transform.position + direction).x;
 
+                v = Quaternion.Euler(0, 0, angle) * v;
+                Vector3 spawnPos = player.transform.position + v * Random.Range(radius, 2 * radius);
+
+                //Debug.DrawLine(player.transform.position, spawnPos, Color.red, 100, false);
+                Instantiate(enemy, spawnPos, Quaternion.identity);
                 StartCoroutine(ReloadSpawn());
             }
         }

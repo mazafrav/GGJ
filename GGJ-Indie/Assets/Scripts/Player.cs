@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private Sprite[] faces;
 
     [SerializeField]
-    private int enemyKills = 0;
+    public int enemyKills = 0;
 
     [SerializeField]
     private int enemiesToGetLife = 25;
@@ -70,7 +70,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(enemyKills >= 100) //Si matamos a todos los enemigos ganamos
+        {
+            gameManager.Win();
+        }
     }
 
     public void ReduceHealth(int amount)
@@ -80,11 +83,11 @@ public class Player : MonoBehaviour
         {
             health = 0;
             int buff = 0;
-            if (enemy3killed > enemy2killed)
+            if (enemy3killed > enemy2killed * 0.8)
             {
                 buff = 3;
             }
-            else if (enemy2killed > enemy1killed)
+            else if (enemy2killed > enemy1killed * 0.7)
             {
                 buff = 2;
             }
@@ -93,6 +96,7 @@ public class Player : MonoBehaviour
                 buff = 1;
             }
             gameManager.setCurrentBuff(buff);
+            Cursor.visible = true;
             gameManager.GameOver();
         }
         UpdateSprite();

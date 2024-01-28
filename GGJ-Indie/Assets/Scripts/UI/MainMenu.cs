@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private TMP_Text textBox;
-    private string text0 = "Face the demons in Joselito's Dream.\nWASD to move.\nCLICK to shoot.\nDUH.";
+    private string text0 = "Face the demons in Joselito's Dream.\nWASD to move.\nHOLD CLICK to shoot.\nDUH.";
     private string text1 = "You will have some help in your next dream.\nBuff: Dream companion";
     private string text2 = "You will have more mental clarity in your next dream.\nBuff: Speed increased";
     private string text3 = "You will be unstoppable on your next dream.\nBuff: More damage";
@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
