@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        audioSource = GameObject.Find("AudioSource").transform.GetChild(3).gameObject.GetComponent<AudioSource>();
 
+        audioSource = GameObject.Find("AudioSource").transform.GetChild(3).gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame

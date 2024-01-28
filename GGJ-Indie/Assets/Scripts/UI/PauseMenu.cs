@@ -48,6 +48,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isPaused = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
