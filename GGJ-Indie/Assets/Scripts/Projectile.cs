@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] int damage = 1;
+    [SerializeField] public float damage = 1;
 
     int piercingCount = 0;
     Player player;
@@ -27,33 +28,34 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!(collision.tag == "Player") && collision.tag != "PlayerProjectile")
-        {
-            if(player != null && piercingCount==0)
-            {
-                //Quitamos vida a los enemigos
-                Enemy enemy = collision.GetComponent<Enemy>();
-                if (enemy != null)
-                {
-                    enemy.ReduceHealth(damage);
-                }
-                EnemyRanged enemyRanged = collision.GetComponent<EnemyRanged>();
-                if(enemyRanged != null)
-                {
-                    enemyRanged.ReduceHealth(damage);
-                }
+        if (!player) return;
+        if(collision.gameObject.layer.Equals("Wall")) Destroy(gameObject);
+        if (collision.tag.Equals("Player") ||
+            collision.tag.Equals("PlayerProjectile") ||
+            collision.tag.Equals("Pet") ||
+            collision.tag.Equals("PowerUp")) return;
 
-                if(collision.tag != "Pet" && collision.tag != "PowerUp")Destroy(gameObject); //Se destruye el projectil
-            }
-            else if (player != null && piercingCount > 0)
+        //Quitamos vida a los enemigos
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.ReduceHealth(damage);
+        }
+        else
+        {
+            EnemyRanged enemyRanged = collision.GetComponent<EnemyRanged>();
+            if (enemyRanged != null)
             {
-                piercingCount--;
+                enemyRanged.ReduceHealth(damage);
             }
         }
+        Debug.Log(piercingCount + collision.gameObject.name + " - " + collision.gameObject.tag);
+        if (piercingCount <= 0) Destroy(gameObject); //Se destruye el projectil
+        else piercingCount--;
     }
 }

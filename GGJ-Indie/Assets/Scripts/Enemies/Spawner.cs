@@ -54,21 +54,6 @@ public class Spawner : MonoBehaviour
                         spawnRate = maxSpawnRate - (playerProgress / 10) * (maxSpawnRate - minSpawnRate);
 
                     previousProgress = playerProgress;
-
-                    if(playerProgress >= 20.0f && playerProgress <= 20.5f)
-                    {
-                        enemies.Add(depression);
-                        
-                    }else if(playerProgress >= 40.0f && playerProgress <= 40.5f)
-                    {
-                        enemies.Add(anxiety);
-                    }else if (playerProgress >= 60.0f && playerProgress <= 60.5f)
-                    {
-                        enemies.Add(ranged);
-                    }else if(playerProgress >= 80.0f && playerProgress <= 80.5f)
-                    {
-                        enemies.Remove(normal);  
-                    }
                }
          
                 Vector3 v = player.transform.up;
@@ -93,7 +78,27 @@ public class Spawner : MonoBehaviour
 
     private GameObject ChooseEnemy()
     {
-        int index = Random.Range(0, enemies.Count);
+        int index = 0;
+        int rndMax = 0;
+        int rndMin = 0;
+        if (playerProgress > 20.0f)
+        {
+            rndMax = 1;
+        }
+        if (playerProgress > 40.0f)
+        {
+            rndMax = 2;
+        }
+        if (playerProgress > 60.0f)
+        {
+            rndMax = 3;
+        }
+        if (playerProgress > 80.0f)
+        {
+            rndMin = 1;
+            rndMax = 3;
+        }
+        index = Random.Range(rndMin, rndMax);
         GameObject enemyToSpawn = enemies[index];
         return enemyToSpawn;
     }
