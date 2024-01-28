@@ -38,7 +38,8 @@ public class Projectile : MonoBehaviour
         if (collision.tag.Equals("Player") ||
             collision.tag.Equals("PlayerProjectile") ||
             collision.tag.Equals("Pet") ||
-            collision.tag.Equals("PowerUp")) return;
+            collision.tag.Equals("PowerUp") ||
+            collision.tag.Equals("DVD")) return;
 
         //Quitamos vida a los enemigos
         Enemy enemy = collision.GetComponent<Enemy>();
