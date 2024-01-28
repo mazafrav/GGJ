@@ -32,6 +32,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.visible = true;
         pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         isPaused = true;
