@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip shootClip;
     private void Awake()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
         rb = GetComponent<Rigidbody2D>();
         player = GetComponent<Player>();
         audioClips = GameObject.Find("AudioSource").transform.GetChild(3).gameObject.GetComponent<AudioSource>();
