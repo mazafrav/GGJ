@@ -11,8 +11,8 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private TMP_Text textBox;
     private string text0 = "Face your demons in your sleep.\n";
     private string text1 = "Advantage for next dream:\n\nDVD COMPANION \nThe DVD will damage your enemies";
-    private string text2 = "Advantage for next dream:\n\nSPEED INCREASE\nBuff: Speed increased";
-    private string text3 = "Advantage for next dream:\n\nDAMAGE INCREASE\nBuff: More damage";
+    private string text2 = "Advantage for next dream:\n\nSPEED INCREASE";
+    private string text3 = "Advantage for next dream:\n\nDAMAGE INCREASE";
     private GameObject gameManager;
     // Start is called before the first frame update
     void Start()
