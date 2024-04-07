@@ -7,6 +7,8 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public GameObject pauseMenu;
     public static bool isPaused;
+    [SerializeField]
+    private LevelLoader levelLoader;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,6 @@ public class NewBehaviourScript : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isPaused = false;
-        SceneManager.LoadScene(0);
+        levelLoader.StartLoadingLevel(0);
     }
 }

@@ -50,16 +50,20 @@ public class Spawner : MonoBehaviour
             if (bCanSpawn)
             {
 
-                if (playerProgress > 10.0f && !depressionadded)
+                if (playerProgress > 15.0f && !depressionadded)
                 {
                     enemies.Add(depression);
                     depressionadded = true;
                 }
                 if (playerProgress > 40.0f && !rangedadded)
                 {
-                    enemies.Add(ranged);
                     enemies.Add(anxiety);
                     rangedadded = true;
+                }
+                if (playerProgress > 60.0f && !anxietyadded)
+                {
+                    enemies.Add(ranged);
+                    anxietyadded = true;
                 }
 
 

@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d3d2d3c8e252345970d6f0de91adc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoader: {fileID: 1321598194}
   textBox: {fileID: 2018742077}
 --- !u!1 &393526988
 GameObject:
@@ -324,7 +325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NEW DREAM
+  m_text: KEEP DREAMING
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -626,6 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c85a37528d7234c8d10b78f2e96946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelLoader: {fileID: 1321598194}
   player: {fileID: 0}
   progression: 0
   maxProgression: 100
@@ -645,6 +647,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1321598193
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769941752398558802, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508718621732025360, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+      propertyPath: m_Name
+      value: LevelLoader
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+--- !u!114 &1321598194 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 265288479388462118, guid: ca8779f179fb59642b3b0adecc098562, type: 3}
+  m_PrefabInstance: {fileID: 1321598193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9354b614abd02934ea6fe6d1f1732346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1360115841
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +1002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BACK TO BED
+  m_text: WAKE UP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1513,6 +1583,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1321598193}
   - {fileID: 393526991}
   - {fileID: 1360115845}
   - {fileID: 1006932013}

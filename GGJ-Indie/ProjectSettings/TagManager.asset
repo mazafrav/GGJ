@@ -55,3 +55,6 @@ TagManager:
   - name: Foreground
     uniqueID: 3369155913
     locked: 0
+  - name: Crossfade
+    uniqueID: 3226208821
+    locked: 0

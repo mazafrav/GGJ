@@ -50,5 +50,5 @@ MonoBehaviour:
   ranged: {fileID: 9192684731926644292, guid: 3f6ddb21c9152a74ea20f725d39e866b, type: 3}
   anxiety: {fileID: 9192684731926644292, guid: 96639bf288ad9df478150cdb18bc1fa1, type: 3}
   radius: 20
-  spawnRate: 3.5
-  minSpawnRate: 0.5
+  spawnRate: 4
+  minSpawnRate: 1

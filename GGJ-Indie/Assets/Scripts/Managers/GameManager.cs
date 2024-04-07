@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
+    private LevelLoader levelLoader;
+    [SerializeField]
     private Player player;
 
     [SerializeField]
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float maxProgression = 100f;
+    private float lerpedProgression;
 
     [SerializeField]
     private float progressionPerKill = 1f;
@@ -44,13 +47,16 @@ public class GameManager : MonoBehaviour
 
         if (!player) return;
         player.onEnemyKill += OnEnemyKill;
+
+        lerpedProgression = progression;
     }
 
     private void Update()
     {
         if (SceneManager.GetActiveScene().name == "Game")
         {
-            UiManager.UpdateBackground(progression.Equals(0f) ? 0f : Math.Min(progression / maxProgression, 1));
+            lerpedProgression = Mathf.Lerp(lerpedProgression, progression, 2.0f*Time.deltaTime);
+            UiManager.UpdateBackground(lerpedProgression.Equals(0f) ? 0f : Math.Min(lerpedProgression / maxProgression, 1));
         }
         //progression += Time.deltaTime * 5;
         // Debug.Log(progression);
@@ -99,14 +105,14 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SceneManager.LoadScene(3);
+        levelLoader.StartLoadingLevel(3);
     }
 
 
     public void Win()
     {
-       
-        SceneManager.LoadScene(2);
+
+        levelLoader.StartLoadingLevel(2);
         
     }
 }
